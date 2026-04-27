@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Canaway — Asesoría Especial IELTS y CELPIP</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  /* ─── TOKENS ───────────────────────────────────────── */
+  :root {
+    --red: #DB1709;
+    --red-dark: #721515;
+    --red-light: #ff5c4d;
+    --red-pale: #fff0ee;
+    --black: #1a1a1a;
+    --white: #ffffff;
+    --bg: #ffffff;
+    --bg-alt: #f7f6f4;
+    --bg-pale: #fff0ee;
+    --border: #e8e5e2;
+    --text: #2a2a2a;
+    --text-soft: #6b6867;
+    --radius: 14px;
+    --shadow: 0 2px 16px rgba(0,0,0,0.06);
+    --shadow-md: 0 6px 28px rgba(0,0,0,0.10);
+    --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+  /* ─── ANIMACIONES ──────────────────────────────────── */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.92) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  @keyframes heroPop {
+    0% { opacity: 0; transform: translateY(30px) scale(0.95); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .animate-on-scroll {
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .animate-on-scroll.visible { animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+  .animate-scale.visible { animation: fadeInScale 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+
+  .hero-content > * { animation: heroPop 0.9s cubic-bezier(0.4, 0, 0.2, 1) backwards; }
+  .hero-content .hero-eyebrow { animation-delay: 80ms; }
+  .hero-content h1 { animation-delay: 200ms; }
+  .hero-content > p { animation-delay: 380ms; }
+  .hero-content ul { animation-delay: 560ms; }
+
+  button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  button:hover {
+    transform: translateY(-2px);
+  }
+
+  /* ─── HERO — variante LIGHT (consistente con landing principal) ─ */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #fff0ee 0%, #f7f6f4 100%);
+    color: var(--text);
+    padding: 120px 24px 100px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0; z-index: 0;
+    background-image: url('https://images.unsplash.com/photo-1517935706615-2717063c2225?auto=format&fit=crop&w=2400&q=80');
+    background-size: cover;
+    background-position: center 35%;
+    opacity: 0.14;
+    filter: saturate(0.9);
+  }
+  .hero::after {
+    content: '';
+    position: absolute; inset: 0; z-index: 0;
+    background:
+      radial-gradient(ellipse 70% 50% at 50% -10%, rgba(219,23,9,0.10) 0%, transparent 65%),
+      linear-gradient(180deg, rgba(255,240,238,0.55) 0%, rgba(247,246,244,0.85) 100%);
+    pointer-events: none;
+  }
+  .hero-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+  @media (max-width: 960px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.73rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--red);
+    padding: 8px 20px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+    box-shadow: 0 2px 8px rgba(219,23,9,0.3);
+  }
+  .hero-content h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.1rem, 4.6vw, 3.3rem);
+    line-height: 1.13;
+    letter-spacing: -0.025em;
+    color: var(--black);
+  }
+  .hero-content h1 em {
+    font-style: normal;
+    color: var(--red);
+  }
+  .hero-content > p {
+    margin-top: 20px;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--text-soft);
+    max-width: 540px;
+  }
+  .hero-bullets {
+    margin-top: 32px;
+    list-style: none;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+  .hero-bullets li {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 14px;
+    align-items: flex-start;
+    color: var(--text);
+  }
+  .hero-bullets li::before {
+    content: "✓";
+    color: var(--red);
+    font-weight: 700;
+    font-size: 1.3rem;
+    line-height: 1;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  /* ─── FORMULARIO ───────────────────────────────────── */
+  .form-card {
+    background: var(--white);
+    color: var(--text);
+    border-radius: 28px;
+    padding: 32px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border);
+  }
+  .form-eyebrow {
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 10px;
+  }
+  .form-card h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.45rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--black);
+    margin-bottom: 14px;
+  }
+  .form-card .form-desc {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: var(--text-soft);
+    margin-bottom: 20px;
+  }
+  .price-box {
+    background: linear-gradient(135deg, var(--red-pale) 0%, #fde4e1 100%);
+    border-radius: 16px;
+    padding: 16px 18px;
+    margin-bottom: 24px;
+    border: 1px solid rgba(219,23,9,0.12);
+  }
+  .price-box .price-label {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--red-dark);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .price-box .price-amount {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--black);
+    line-height: 1.1;
+    margin-top: 4px;
+  }
+  .price-box .price-note {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--text-soft);
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+  .form-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .form-card input,
+  .form-card select {
+    width: 100%;
+    border: 1px solid #e5e5e4;
+    border-radius: 14px;
+    padding: 15px 18px;
+    font-size: 0.95rem;
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    outline: none;
+    background: var(--white);
+    transition: border-color var(--transition), box-shadow 0.3s ease;
+  }
+  .form-card select { cursor: pointer; }
+  .form-card input:focus,
+  .form-card select:focus {
+    border-color: var(--red);
+    box-shadow: 0 0 0 4px rgba(219,23,9,0.12);
+  }
+  .form-submit {
+    margin-top: 6px;
+    width: 100%;
+    background: var(--red);
+    color: var(--white);
+    border: none;
+    border-radius: 14px;
+    padding: 17px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .form-submit:hover {
+    background: var(--red-dark);
+    box-shadow: 0 12px 28px -8px rgba(219,23,9,0.5);
+    transform: translateY(-2px);
+  }
+  .form-submit svg { transition: transform 0.3s ease; }
+  .form-submit:hover svg { transform: translateX(4px); }
+  .form-note {
+    margin-top: 16px;
+    font-size: 0.78rem;
+    color: var(--text-soft);
+    line-height: 1.55;
+    text-align: center;
+  }
+  .privacy-note {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 12px;
+    font-size: 0.76rem;
+    color: var(--text-soft);
+  }
+  .privacy-note svg { color: var(--red); flex-shrink: 0; }
+
+  /* ─── TÍTULOS / SECCIONES ──────────────────────────── */
+  section { padding: 96px 24px; }
+  .container { max-width: 1180px; margin: 0 auto; }
+  .section-eyebrow {
+    display: inline-block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 14px;
+  }
+  .section-eyebrow.on-dark { color: var(--red-light); }
+  .section-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.7rem, 3.4vw, 2.4rem);
+    line-height: 1.18;
+    letter-spacing: -0.022em;
+    color: var(--black);
+  }
+  .section-title.on-dark { color: var(--white); }
+  .section-lead {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--text-soft);
+    max-width: 660px;
+    margin-top: 14px;
+  }
+  .section-lead.on-dark { color: rgba(255,255,255,0.78); }
+
+  /* ─── TRUST BAND ───────────────────────────────────── */
+  .trust-band {
+    background: var(--bg-alt);
+    border-bottom: 1px solid var(--border);
+    padding: 36px 24px;
+  }
+  .trust-grid {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+  }
+  .trust-item {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--text);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+    transition: all 0.3s ease;
+  }
+  .trust-item:hover {
+    transform: translateY(-3px);
+    border-color: var(--red);
+    box-shadow: 0 12px 24px -8px rgba(219,23,9,0.15);
+  }
+  .trust-check {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--red-pale);
+    color: var(--red);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .trust-check svg { width: 13px; height: 13px; }
+
+  /* ─── PROGRAM FIT — para ti si... ──────────────────── */
+  .fit-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 16px;
+    margin-top: 44px;
+  }
+  .fit-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 20px;
+    padding: 22px 24px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .fit-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--red);
+    box-shadow: 0 16px 36px -12px rgba(219,23,9,0.18);
+  }
+  .fit-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--red);
+    margin-top: 8px;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 4px var(--red-pale);
+  }
+  .fit-card p {
+    font-size: 0.96rem;
+    line-height: 1.65;
+    color: var(--text);
+  }
+
+  /* ─── TESTIMONIOS — fondo rojo pálido (consistente con landing principal) ── */
+  .testimonials-section {
+    background: var(--bg-pale);
+    color: var(--text);
+  }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 22px;
+    margin-top: 44px;
+  }
+  .testimonial-card {
+    position: relative;
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 30px 28px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .testimonial-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--red);
+    box-shadow: 0 20px 50px -12px rgba(219,23,9,0.18);
+  }
+  .testimonial-quote-mark {
+    position: absolute;
+    top: 6px;
+    right: 22px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 6.5rem;
+    line-height: 1;
+    font-weight: 900;
+    color: var(--red);
+    opacity: 0.09;
+    pointer-events: none;
+    user-select: none;
+  }
+  .testimonial-stars {
+    display: inline-flex;
+    gap: 3px;
+    color: #f5b400;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+  .testimonial-stars svg { width: 16px; height: 16px; }
+  .testimonial-card p {
+    position: relative;
+    z-index: 1;
+    color: var(--text);
+    font-size: 0.96rem;
+    line-height: 1.7;
+  }
+  .testimonial-banner {
+    margin-top: 36px;
+    border-radius: 22px;
+    border: 1.5px solid rgba(219,23,9,0.25);
+    background: var(--white);
+    padding: 24px 32px;
+    text-align: center;
+    color: var(--red-dark);
+    font-size: 1rem;
+    line-height: 1.6;
+    font-weight: 500;
+  }
+
+  /* ─── VALUE PROP ───────────────────────────────────── */
+  .value-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 56px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .value-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+  .value-content p {
+    font-size: 1.05rem;
+    line-height: 1.78;
+    color: var(--text);
+    margin-bottom: 18px;
+  }
+  .value-content p:last-child { margin-bottom: 0; }
+
+  /* ─── INCLUDES — qué recibirás (con iconos) ────────── */
+  .includes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+    margin-top: 44px;
+  }
+  .include-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 30px 26px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .include-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--red);
+    box-shadow: 0 20px 40px -12px rgba(219,23,9,0.18);
+  }
+  .include-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: var(--red-pale);
+    color: var(--red);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .include-icon svg { width: 28px; height: 28px; }
+  .include-card:hover .include-icon {
+    background: var(--red);
+    color: var(--white);
+    transform: scale(1.06) rotate(-4deg);
+  }
+  .include-card h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.18rem;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+  .include-card p {
+    font-size: 0.93rem;
+    line-height: 1.7;
+    color: var(--text-soft);
+  }
+
+  /* ─── AUTHORITY + VIDEO ────────────────────────────── */
+  .authority-section {
+    padding: 96px 24px;
+  }
+  .authority-wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 36px;
+    background: linear-gradient(135deg, var(--red-pale) 0%, #f7f6f4 100%);
+    border-radius: 32px;
+    padding: 56px;
+  }
+  @media (max-width: 900px) {
+    .authority-wrap { grid-template-columns: 1fr; padding: 36px 28px; gap: 28px; }
+  }
+  .authority-content p {
+    font-size: 1.02rem;
+    line-height: 1.75;
+    color: var(--text);
+    margin-bottom: 16px;
+  }
+  .authority-btn {
+    margin-top: 12px;
+    background: var(--black);
+    color: var(--white);
+    border: none;
+    border-radius: 100px;
+    padding: 16px 30px;
+    font-weight: 600;
+    font-size: 0.98rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+  }
+  .authority-btn:hover {
+    background: #000;
+    box-shadow: 0 14px 28px -8px rgba(0,0,0,0.3);
+  }
+  .authority-btn svg { transition: transform 0.3s ease; }
+  .authority-btn:hover svg { transform: translateX(4px); }
+  .video-placeholder {
+    background: var(--white);
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    padding: 40px 30px;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+    transition: all 0.4s ease;
+    cursor: pointer;
+  }
+  .video-placeholder:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+  }
+  .video-play {
+    width: 78px;
+    height: 78px;
+    border-radius: 50%;
+    background: var(--black);
+    color: var(--white);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    box-shadow: 0 14px 30px -8px rgba(0,0,0,0.4);
+    transition: all 0.4s ease;
+  }
+  .video-placeholder:hover .video-play {
+    background: var(--red);
+    transform: scale(1.06);
+  }
+  .video-play svg {
+    width: 28px;
+    height: 28px;
+    margin-left: 4px;
+  }
+  .video-placeholder h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.18rem;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 6px;
+  }
+  .video-placeholder p {
+    font-size: 0.9rem;
+    color: var(--text-soft);
+    line-height: 1.5;
+  }
+
+  /* ─── FAQ — fondo claro ────────────────────────────── */
+  .faq-section {
+    background: var(--bg-alt);
+    color: var(--text);
+  }
+  .faq-section .container {
+    max-width: 860px;
+    text-align: center;
+  }
+  .faq-list {
+    margin-top: 44px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    text-align: left;
+  }
+  .faq-item {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 18px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  .faq-item[open] {
+    border-color: var(--red);
+    box-shadow: 0 12px 28px -10px rgba(219,23,9,0.18);
+  }
+  .faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 22px 26px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.02rem;
+    color: var(--black);
+    line-height: 1.4;
+    transition: color 0.3s ease;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary:hover { color: var(--red); }
+  .faq-toggle {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--red-pale);
+    color: var(--red);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    line-height: 1;
+    font-weight: 400;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .faq-item[open] .faq-toggle {
+    transform: rotate(45deg);
+    background: var(--red);
+    color: var(--white);
+  }
+  .faq-item .faq-answer {
+    padding: 0 26px 24px;
+    color: var(--text-soft);
+    line-height: 1.7;
+    font-size: 0.95rem;
+  }
+
+  /* ─── FINAL CTA — negro consistente con landing principal ─ */
+  .final-cta-section {
+    padding: 60px 24px 96px;
+  }
+  .final-cta {
+    max-width: 1180px;
+    margin: 0 auto;
+    background: var(--black);
+    color: var(--white);
+    border-radius: 32px;
+    padding: 64px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 60px -20px rgba(0,0,0,0.3);
+  }
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 50% 100%, rgba(219,23,9,0.18) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .final-cta > * { position: relative; z-index: 1; }
+  .final-cta h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .final-cta p {
+    max-width: 620px;
+    margin: 0 auto 36px;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.78);
+  }
+  .final-cta__buttons {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .final-cta__buttons button {
+    border: none;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.98rem;
+    padding: 16px 30px;
+    border-radius: 100px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .btn-primary {
+    background: var(--red);
+    color: var(--white);
+    box-shadow: 0 10px 24px -6px rgba(219,23,9,0.5);
+  }
+  .btn-primary:hover {
+    background: var(--red-dark);
+    box-shadow: 0 14px 32px -6px rgba(219,23,9,0.6);
+  }
+  .btn-secondary {
+    background: rgba(255,255,255,0.08);
+    color: var(--white);
+    border: 1px solid rgba(255,255,255,0.18) !important;
+    backdrop-filter: blur(8px);
+  }
+  .btn-secondary:hover {
+    background: rgba(255,255,255,0.14);
+  }
+  .final-cta__buttons svg { transition: transform 0.3s ease; }
+  .final-cta__buttons button:hover svg { transform: translateX(4px); }
+
+  /* ─── CTA FLOTANTE MOBILE ──────────────────────────── */
+  .mobile-cta {
+    display: none;
+    position: fixed;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    z-index: 100;
+    background: var(--red);
+    color: var(--white);
+    padding: 16px 24px;
+    border-radius: 100px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    box-shadow: 0 12px 28px rgba(219, 23, 9, 0.5);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .mobile-cta.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .mobile-cta svg { transition: transform 0.3s ease; }
+  .mobile-cta:hover svg { transform: translateX(4px); }
+  @media (max-width: 768px) {
+    .mobile-cta { display: inline-flex; }
+    .final-cta-section { padding-bottom: 110px; }
+  }
+
+  /* ─── RESPONSIVE ───────────────────────────────────── */
+  @media (max-width: 768px) {
+    section { padding: 72px 24px; }
+    .authority-wrap { padding: 32px 24px; }
+    .final-cta { padding: 48px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO — DARK PREMIUM -->
+<div class="hero" id="hero-form">
+  <div class="hero-grid">
+    <div class="hero-content">
+      <span class="hero-eyebrow">Asesoría especial IELTS y CELPIP</span>
+      <h1>Logra el puntaje que puede abrirte nuevas oportunidades laborales y de <em>residencia en Canadá</em></h1>
+      <p>Perfecciona todas las habilidades del idioma con una ruta personalizada y el acompañamiento continuo de una academia canadiense que ya ha guiado a más de 15,000 latinoamericanos a cumplir sus metas en Canadá.</p>
+      <ul class="hero-bullets">
+        <li>Preparación estratégica para alcanzar el puntaje ideal en IELTS y CELPIP según tu objetivo</li>
+        <li>Acompañamiento continuo en speaking, listening, reading y writing</li>
+        <li>Ideal para quienes buscan crecer profesionalmente o fortalecer su camino hacia la residencia</li>
+      </ul>
+    </div>
+
+    <!-- FORMULARIO -->
+    <div class="form-card">
+      <span class="form-eyebrow">Empieza hoy</span>
+      <h2>Agenda tu asesoría especial para IELTS y CELPIP</h2>
+      <p class="form-desc">Hablarás con profesores expertos en IELTS y CELPIP, quienes evaluarán tu caso, el puntaje que necesitas y tu objetivo en Canadá para recomendarte la mejor ruta Canaway.</p>
+
+      <div class="price-box">
+        <span class="price-label">Valor de la asesoría</span>
+        <span class="price-amount">USD $15</span>
+        <span class="price-note">Este monto se descuenta de cualquier curso que adquieras con nosotros.</span>
+      </div>
+
+      <form>
+        <input type="text" placeholder="Nombre completo" required />
+        <input type="email" placeholder="Correo electrónico" required />
+        <input type="tel" placeholder="WhatsApp" required />
+        <select required>
+          <option value="">Examen de interés</option>
+          <option>IELTS</option>
+          <option>CELPIP</option>
+          <option>Aún no estoy seguro</option>
+        </select>
+        <select required>
+          <option value="">Objetivo principal</option>
+          <option>Profesional</option>
+          <option>Residencia</option>
+          <option>Ambos</option>
+        </select>
+        <button type="button" class="form-submit" onclick="alert('¡Genial! Te contactaremos para coordinar tu asesoría especial.')">
+          Quiero agendar mi asesoría
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+            <path d="M5 12h14"/>
+            <path d="m12 5 7 7-7 7"/>
+          </svg>
+        </button>
+      </form>
+
+      <p class="form-note">Así podrás elegir con mayor claridad la ruta que realmente necesitas, sin pagar programas costosos a ciegas.</p>
+      <p class="privacy-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13">
+          <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+        Tus datos están protegidos. Solo te contactamos por la asesoría.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST BAND -->
+<div class="trust-band">
+  <div class="trust-grid">
+    <div class="trust-item">
+      <span class="trust-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+      +15,000 latinoamericanos acompañados
+    </div>
+    <div class="trust-item">
+      <span class="trust-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+      Academia canadiense
+    </div>
+    <div class="trust-item">
+      <span class="trust-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+      Preparación en vivo y personalizada
+    </div>
+    <div class="trust-item">
+      <span class="trust-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+      Ruta enfocada en metas reales en Canadá
+    </div>
+  </div>
+</div>
+
+<!-- PROGRAM FIT — Este programa es para ti si... -->
+<section>
+  <div class="container">
+    <span class="section-eyebrow">Identificación rápida</span>
+    <h2 class="section-title animate-on-scroll">Este programa es para ti si…</h2>
+
+    <div class="fit-grid">
+      <div class="fit-card animate-on-scroll" data-delay="80">
+        <span class="fit-dot"></span>
+        <p>Ya vives en Canadá y necesitas un mejor puntaje para avanzar con más seguridad.</p>
+      </div>
+      <div class="fit-card animate-on-scroll" data-delay="180">
+        <span class="fit-dot"></span>
+        <p>Quieres mejorar tu perfil profesional y acceder a mejores oportunidades.</p>
+      </div>
+      <div class="fit-card animate-on-scroll" data-delay="280">
+        <span class="fit-dot"></span>
+        <p>Buscas fortalecer tu camino hacia la residencia con una preparación más estratégica.</p>
+      </div>
+      <div class="fit-card animate-on-scroll" data-delay="380">
+        <span class="fit-dot"></span>
+        <p>Sientes que tu inglés no refleja todo tu potencial en el examen.</p>
+      </div>
+      <div class="fit-card animate-on-scroll" data-delay="480">
+        <span class="fit-dot"></span>
+        <p>Ya estudiaste antes, pero todavía no logras el resultado que necesitas.</p>
+      </div>
+      <div class="fit-card animate-on-scroll" data-delay="580">
+        <span class="fit-dot"></span>
+        <p>Quieres una ruta clara, acompañamiento real y práctica enfocada en resultados.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS — fondo oscuro -->
+<section class="testimonials-section">
+  <div class="container">
+    <span class="section-eyebrow">Prueba social</span>
+    <h2 class="section-title animate-on-scroll">Latinoamericanos que ya lograron resultados reales</h2>
+    <p class="section-lead">Miles de estudiantes han confiado en Canaway para perfeccionar su inglés, mejorar su desempeño en exámenes oficiales y acercarse a sus metas profesionales y migratorias en Canadá.</p>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card animate-on-scroll" data-delay="100">
+        <div class="testimonial-quote-mark" aria-hidden="true">”</div>
+        <div class="testimonial-stars" aria-label="5 de 5 estrellas">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
+        <p>“Lo que más me ayudó fue tener una ruta clara y acompañamiento constante. Dejé de practicar por practicar y empecé a prepararme con estrategia.”</p>
+      </div>
+      <div class="testimonial-card animate-on-scroll animate-scale" data-delay="280">
+        <div class="testimonial-quote-mark" aria-hidden="true">”</div>
+        <div class="testimonial-stars" aria-label="5 de 5 estrellas">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
+        <p>“Sentí que por fin estaba trabajando todas mis habilidades de forma correcta. Eso me dio mucha más confianza para rendir el examen.”</p>
+      </div>
+      <div class="testimonial-card animate-on-scroll" data-delay="460">
+        <div class="testimonial-quote-mark" aria-hidden="true">”</div>
+        <div class="testimonial-stars" aria-label="5 de 5 estrellas">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
+        <p>“No solo mejoré mi nivel. También entendí cómo responder mejor en el examen y cómo enfocarme en el puntaje que necesitaba para mi objetivo.”</p>
+      </div>
+    </div>
+
+    <div class="testimonial-banner animate-on-scroll">
+      Una academia canadiense. Un plan claro. Un acompañamiento pensado para metas reales en Canadá.
+    </div>
+  </div>
+</section>
+
+<!-- PROPUESTA DE VALOR -->
+<section>
+  <div class="container">
+    <div class="value-grid">
+      <div class="animate-on-scroll">
+        <span class="section-eyebrow">Propuesta de valor</span>
+        <h2 class="section-title">Te ayudamos a obtener el puntaje ideal para tu objetivo en Canadá</h2>
+      </div>
+      <div class="value-content animate-on-scroll" data-delay="200">
+        <p>A veces, el problema no es tu nivel de inglés, sino la falta de estrategia. Con la estructura correcta y una preparación enfocada en lo que evalúan IELTS y CELPIP, tu desempeño puede cambiar por completo.</p>
+        <p>No se trata solo de estudiar más, sino de prepararte mejor. Te ayudamos a responder con más claridad, seguridad y enfoque para acercarte al puntaje que necesitas.</p>
+        <p>Porque detrás de ese puntaje no solo hay un examen, sino la posibilidad de avanzar con más seguridad, fortalecer tu perfil y acercarte a la vida que quieres construir en Canadá.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INCLUDES — Qué recibirás (con iconos) -->
+<section style="background: var(--bg-alt);">
+  <div class="container">
+    <span class="section-eyebrow">Acompañamiento</span>
+    <h2 class="section-title animate-on-scroll">¿Qué recibirás con este acompañamiento especializado?</h2>
+    <p class="section-lead">Una preparación estructurada, estratégica y enfocada en el puntaje que necesitas para avanzar con seguridad.</p>
+
+    <div class="includes-grid">
+      <!-- Ruta personalizada — mapa/ruta -->
+      <div class="include-card animate-on-scroll" data-delay="100">
+        <div class="include-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/>
+            <path d="M15 5.764v15"/>
+            <path d="M9 3.236v15"/>
+          </svg>
+        </div>
+        <h3>Ruta personalizada según tu objetivo</h3>
+        <p>Diseñamos un camino de preparación enfocado en el puntaje que necesitas según tu meta profesional, migratoria o personal en Canadá.</p>
+      </div>
+
+      <!-- Perfeccionamiento integral — sparkle/brillo -->
+      <div class="include-card animate-on-scroll animate-scale" data-delay="220">
+        <div class="include-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>
+            <path d="M20 3v4"/>
+            <path d="M22 5h-4"/>
+            <path d="M4 17v2"/>
+            <path d="M5 18H3"/>
+          </svg>
+        </div>
+        <h3>Perfeccionamiento integral del idioma</h3>
+        <p>Trabajamos contigo speaking, listening, reading y writing para que mejores de forma completa y no solo superficial.</p>
+      </div>
+
+      <!-- Entrenamiento estratégico — diana -->
+      <div class="include-card animate-on-scroll" data-delay="340">
+        <div class="include-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <circle cx="12" cy="12" r="6"/>
+            <circle cx="12" cy="12" r="2"/>
+          </svg>
+        </div>
+        <h3>Entrenamiento estratégico para el examen</h3>
+        <p>Aprenderás a responder con más seguridad, manejar mejor el tiempo y evitar errores que afectan tu resultado.</p>
+      </div>
+
+      <!-- Acompañamiento — personas -->
+      <div class="include-card animate-on-scroll animate-scale" data-delay="460">
+        <div class="include-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <h3>Acompañamiento continuo</h3>
+        <p>No avanzarás solo. Tendrás guía constante durante tu proceso para corregir, reforzar y mejorar con dirección.</p>
+      </div>
+
+      <!-- Resultados — gráfica subiendo -->
+      <div class="include-card animate-on-scroll" data-delay="580">
+        <div class="include-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
+            <polyline points="16 7 22 7 22 13"/>
+          </svg>
+        </div>
+        <h3>Enfoque real en resultados</h3>
+        <p>Cada parte del proceso está pensada para acercarte al puntaje ideal que necesitas para avanzar en Canadá.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTHORITY + VIDEO -->
+<section class="authority-section">
+  <div class="authority-wrap">
+    <div class="authority-content animate-on-scroll">
+      <span class="section-eyebrow">Contenido de autoridad</span>
+      <h2 class="section-title">Conoce los errores que más bajan el puntaje en IELTS y CELPIP</h2>
+      <p style="margin-top:18px;">Hemos identificado los errores más frecuentes que cometen los estudiantes al presentar estos exámenes, desde fallas en estructura y fluidez hasta respuestas que no cumplen con lo que realmente evalúan.</p>
+      <p>Por eso, además del acompañamiento, contamos con contenido en video, tips estratégicos y guía especializada para ayudarte a entender qué marcará la diferencia en tu resultado.</p>
+      <button class="authority-btn" onclick="alert('¡Genial! Te enviaremos orientación personalizada.')">
+        Quiero recibir orientación
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+          <path d="M5 12h14"/>
+          <path d="m12 5 7 7-7 7"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="video-placeholder animate-on-scroll animate-scale" data-delay="200">
+      <div class="video-play" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+      </div>
+      <h4>Video o reel explicativo</h4>
+      <p>Aquí puedes incrustar un video de autoridad o una clase breve con tips estratégicos.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <span class="section-eyebrow">Preguntas frecuentes</span>
+    <h2 class="section-title animate-on-scroll">Resolvemos tus dudas antes de empezar</h2>
+
+    <div class="faq-list">
+      <details class="faq-item animate-on-scroll" data-delay="80">
+        <summary>
+          ¿Este acompañamiento es solo para personas que van a presentar el examen pronto?
+          <span class="faq-toggle" aria-hidden="true">+</span>
+        </summary>
+        <div class="faq-answer">No. También es ideal para quienes quieren empezar a prepararse con tiempo y construir una base sólida para alcanzar el puntaje que necesitan.</div>
+      </details>
+      <details class="faq-item animate-on-scroll" data-delay="160">
+        <summary>
+          ¿Me ayudará si mi meta es crecer profesionalmente en Canadá?
+          <span class="faq-toggle" aria-hidden="true">+</span>
+        </summary>
+        <div class="faq-answer">Sí. Esta preparación está pensada para quienes quieren fortalecer su perfil, mejorar sus oportunidades y avanzar con mayor seguridad en el país.</div>
+      </details>
+      <details class="faq-item animate-on-scroll" data-delay="240">
+        <summary>
+          ¿También puede ayudarme si busco residencia?
+          <span class="faq-toggle" aria-hidden="true">+</span>
+        </summary>
+        <div class="faq-answer">Sí. Muchas personas necesitan un mejor puntaje como parte de su proceso y buscan una preparación más estratégica y guiada.</div>
+      </details>
+      <details class="faq-item animate-on-scroll" data-delay="320">
+        <summary>
+          ¿Qué pasa si siento que me falta mejorar varias habilidades del idioma?
+          <span class="faq-toggle" aria-hidden="true">+</span>
+        </summary>
+        <div class="faq-answer">Justamente por eso el enfoque es integral. Trabajamos todas las áreas clave del idioma para ayudarte a mejorar de forma completa.</div>
+      </details>
+      <details class="faq-item animate-on-scroll" data-delay="400">
+        <summary>
+          ¿Qué pasa después de llenar el formulario?
+          <span class="faq-toggle" aria-hidden="true">+</span>
+        </summary>
+        <div class="faq-answer">Después de completar tus datos, podrás realizar el pago de la asesoría especial. Luego tendrás una sesión con profesores expertos en IELTS y CELPIP, quienes revisarán tu caso y te recomendarán la mejor ruta según tu objetivo.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta-section">
+  <div class="final-cta">
+    <h2 class="animate-on-scroll">Empieza con una estrategia clara y personalizada</h2>
+    <p>Da el siguiente paso con el respaldo de una academia canadiense y una preparación enfocada en el puntaje que realmente necesitas para tu meta.</p>
+    <div class="final-cta__buttons">
+      <button class="btn-primary" onclick="document.getElementById('hero-form').scrollIntoView({behavior:'smooth'})">
+        Quiero alcanzar mi puntaje ideal
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+          <path d="M5 12h14"/>
+          <path d="m12 5 7 7-7 7"/>
+        </svg>
+      </button>
+      <button class="btn-secondary" onclick="alert('Te conectamos con un asesor por WhatsApp.')">
+        Quiero hablar con un asesor
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FLOTANTE MOBILE -->
+<a href="#hero-form" class="mobile-cta" aria-label="Ir al formulario para agendar mi asesoría">
+  Quiero agendar mi asesoría
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+    <path d="M5 12h14"/>
+    <path d="m12 5 7 7-7 7"/>
+  </svg>
+</a>
+
+<script>
+/* Intersection Observer */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, index) => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const delay = parseInt(el.getAttribute('data-delay')) || (index * 60);
+      setTimeout(() => {
+        el.classList.add('visible');
+      }, delay);
+      observer.unobserve(el);
+    }
+  });
+}, { threshold: 0.2, rootMargin: "0px 0px -50px 0px" });
+
+document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+
+/* Mobile CTA — aparece al pasar el hero */
+(function() {
+  const mobileCta = document.querySelector('.mobile-cta');
+  const hero = document.querySelector('.hero');
+  if (!mobileCta || !hero) return;
+  const trigger = () => {
+    const heroBottom = hero.offsetTop + hero.offsetHeight;
+    if (window.scrollY > heroBottom * 0.6) {
+      mobileCta.classList.add('visible');
+    } else {
+      mobileCta.classList.remove('visible');
+    }
+  };
+  window.addEventListener('scroll', trigger, { passive: true });
+  trigger();
+})();
+
+console.log('%c✅ Canaway IELTS / CELPIP — Landing premium dark', 'color:#DB1709; font-weight:700; font-size:13px;');
+</script>
+</body>
+</html>
