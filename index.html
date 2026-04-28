@@ -76,8 +76,8 @@
     background-image: url('https://images.unsplash.com/photo-1517935706615-2717063c2225?auto=format&fit=crop&w=2400&q=80');
     background-size: cover;
     background-position: center 35%;
-    opacity: 0.14;
-    filter: saturate(0.9);
+    opacity: 0.22;
+    filter: saturate(0.95);
   }
   .hero::after {
     content: '';
@@ -387,15 +387,6 @@
     border-color: var(--red);
     box-shadow: 0 16px 36px -12px rgba(219,23,9,0.18);
   }
-  .fit-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--red);
-    margin-top: 8px;
-    flex-shrink: 0;
-    box-shadow: 0 0 0 4px var(--red-pale);
-  }
   .fit-card p {
     font-size: 0.96rem;
     line-height: 1.65;
@@ -582,59 +573,6 @@
   }
   .authority-btn svg { transition: transform 0.3s ease; }
   .authority-btn:hover svg { transform: translateX(4px); }
-  .video-placeholder {
-    background: var(--white);
-    border-radius: 24px;
-    border: 1px solid var(--border);
-    padding: 40px 30px;
-    min-height: 320px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.04);
-    transition: all 0.4s ease;
-    cursor: pointer;
-  }
-  .video-placeholder:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-  }
-  .video-play {
-    width: 78px;
-    height: 78px;
-    border-radius: 50%;
-    background: var(--black);
-    color: var(--white);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 18px;
-    box-shadow: 0 14px 30px -8px rgba(0,0,0,0.4);
-    transition: all 0.4s ease;
-  }
-  .video-placeholder:hover .video-play {
-    background: var(--red);
-    transform: scale(1.06);
-  }
-  .video-play svg {
-    width: 28px;
-    height: 28px;
-    margin-left: 4px;
-  }
-  .video-placeholder h4 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.18rem;
-    font-weight: 600;
-    color: var(--black);
-    margin-bottom: 6px;
-  }
-  .video-placeholder p {
-    font-size: 0.9rem;
-    color: var(--text-soft);
-    line-height: 1.5;
-  }
 
   /* ─── FAQ — fondo claro ────────────────────────────── */
   .faq-section {
@@ -826,6 +764,233 @@
     .authority-wrap { padding: 32px 24px; }
     .final-cta { padding: 48px 28px; }
   }
+
+  /* ─── CARRUSEL DE PROFESORES EN HERO ──────────────── */
+  .professor-carousel {
+    margin-top: 32px;
+    max-width: 540px;
+    position: relative;
+  }
+  .professor-carousel__track {
+    display: grid;
+    grid-template-areas: "card";
+  }
+  .professor-card {
+    grid-area: card;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    padding: 18px 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    backdrop-filter: blur(10px);
+    transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.4s ease,
+                border-color 0.4s ease;
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+  }
+  .professor-card.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .professor-card:hover {
+    box-shadow: 0 14px 32px rgba(219,23,9,0.12);
+    border-color: var(--red);
+  }
+  .professor-card img {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--red-pale);
+    flex-shrink: 0;
+  }
+  .professor-card__body { flex: 1; min-width: 0; }
+  .professor-card__name {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--black);
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+  .professor-card__quote {
+    font-size: 0.86rem;
+    line-height: 1.5;
+    color: var(--text);
+    margin-bottom: 6px;
+    font-style: italic;
+  }
+  .professor-card__role {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    color: var(--text-soft);
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  .professor-carousel__dots {
+    display: flex;
+    gap: 8px;
+    margin-top: 18px;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .professor-carousel__dots button {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(219,23,9,0.25);
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .professor-carousel__dots button:hover {
+    background: rgba(219,23,9,0.5);
+    transform: none;
+  }
+  .professor-carousel__dots button.active {
+    background: var(--red);
+    width: 26px;
+    border-radius: 4px;
+    transform: none;
+  }
+
+  /* ─── ICONOS EN FIT-CARDS ─────────────────────────── */
+  .fit-card {
+    align-items: center;
+  }
+  .fit-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--red-pale);
+    color: var(--red);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .fit-icon svg { width: 22px; height: 22px; }
+  .fit-card:hover .fit-icon {
+    background: var(--red);
+    color: var(--white);
+    transform: scale(1.06) rotate(-4deg);
+  }
+
+  /* ─── TESTIMONIOS — autor con avatar + nombre ────── */
+  .testimonial-author {
+    margin-top: 22px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    z-index: 1;
+  }
+  .testimonial-avatar {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--red-pale);
+    flex-shrink: 0;
+  }
+  .testimonial-name {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: var(--black);
+    font-size: 0.92rem;
+    line-height: 1.2;
+  }
+  .testimonial-location {
+    font-size: 0.8rem;
+    color: var(--text-soft);
+    margin-top: 2px;
+  }
+
+  /* ─── VIDEO THUMBNAIL — versión con imagen real ───── */
+  .video-thumb {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    transition: all 0.4s ease;
+  }
+  .video-thumb:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  }
+  .video-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .video-thumb:hover img { transform: scale(1.04); }
+  .video-thumb::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.55) 100%);
+    pointer-events: none;
+  }
+  .video-thumb__play {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    background: var(--white);
+    color: var(--red);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 14px 30px -8px rgba(0,0,0,0.5);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+  }
+  .video-thumb:hover .video-thumb__play {
+    transform: translate(-50%, -50%) scale(1.08);
+    background: var(--red);
+    color: var(--white);
+  }
+  .video-thumb__play svg {
+    width: 30px;
+    height: 30px;
+    margin-left: 4px;
+  }
+  .video-thumb__caption {
+    position: absolute;
+    bottom: 22px;
+    left: 22px;
+    right: 22px;
+    color: var(--white);
+    z-index: 1;
+  }
+  .video-thumb__title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 4px;
+  }
+  .video-thumb__sub {
+    font-size: 0.82rem;
+    opacity: 0.85;
+  }
 </style>
 </head>
 <body>
@@ -842,6 +1007,54 @@
         <li>Acompañamiento continuo en speaking, listening, reading y writing</li>
         <li>Ideal para quienes buscan crecer profesionalmente o fortalecer su camino hacia la residencia</li>
       </ul>
+
+      <!-- Carrusel de profesores -->
+      <div class="professor-carousel" id="professorCarousel" aria-label="Profesores expertos en IELTS y CELPIP">
+        <div class="professor-carousel__track">
+          <div class="professor-card active">
+            <img src="https://raw.githubusercontent.com/xultun/canaway/main/Julius.png" alt="Julius M., profesor de IELTS y CELPIP" />
+            <div class="professor-card__body">
+              <span class="professor-card__name">Julius M.</span>
+              <p class="professor-card__quote">“Mi enfoque es ser directo pero constructivo, ayudando a mis estudiantes a superar sus debilidades y alcanzar sus objetivos con claridad y determinación.”</p>
+              <span class="professor-card__role">Profesor IELTS / CELPIP</span>
+            </div>
+          </div>
+
+          <div class="professor-card">
+            <img src="https://raw.githubusercontent.com/xultun/canaway/main/Rosalie.png" alt="Rosalie D., profesora de Canaway" />
+            <div class="professor-card__body">
+              <span class="professor-card__name">Rosalie D.</span>
+              <p class="professor-card__quote">“Me encanta ver cómo nuestros estudiantes ganan confianza para responder con seguridad. ¡El progreso es real y constante!”</p>
+              <span class="professor-card__role">Profesora certificada</span>
+            </div>
+          </div>
+
+          <div class="professor-card">
+            <img src="https://raw.githubusercontent.com/xultun/canaway/main/Emma.png" alt="Emma V., profesora de Canaway" />
+            <div class="professor-card__body">
+              <span class="professor-card__name">Emma V.</span>
+              <p class="professor-card__quote">“Me encanta crear clases dinámicas y centradas en las necesidades individuales de cada estudiante. ¡Ver cómo ganan fluidez es lo más gratificante!”</p>
+              <span class="professor-card__role">Profesora certificada</span>
+            </div>
+          </div>
+
+          <div class="professor-card">
+            <img src="https://raw.githubusercontent.com/xultun/canaway/main/Divine.png" alt="Divine C., profesora de Canaway" />
+            <div class="professor-card__body">
+              <span class="professor-card__name">Divine C.</span>
+              <p class="professor-card__quote">“Me apasiona guiar a mis estudiantes en cada lección, ayudándolos a expresarse con confianza y mejorar día a día.”</p>
+              <span class="professor-card__role">Profesora de inglés</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="professor-carousel__dots" role="tablist">
+          <button class="active" data-index="0" aria-label="Ver profesor 1"></button>
+          <button data-index="1" aria-label="Ver profesor 2"></button>
+          <button data-index="2" aria-label="Ver profesor 3"></button>
+          <button data-index="3" aria-label="Ver profesor 4"></button>
+        </div>
+      </div>
     </div>
 
     <!-- FORMULARIO -->
@@ -922,28 +1135,76 @@
     <h2 class="section-title animate-on-scroll">Este programa es para ti si…</h2>
 
     <div class="fit-grid">
+      <!-- Card 1: Vives en Canadá — icono casa/hogar -->
       <div class="fit-card animate-on-scroll" data-delay="80">
-        <span class="fit-dot"></span>
+        <span class="fit-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </span>
         <p>Ya vives en Canadá y necesitas un mejor puntaje para avanzar con más seguridad.</p>
       </div>
+
+      <!-- Card 2: Crecimiento profesional — maletín -->
       <div class="fit-card animate-on-scroll" data-delay="180">
-        <span class="fit-dot"></span>
+        <span class="fit-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+            <rect width="20" height="14" x="2" y="6" rx="2"/>
+          </svg>
+        </span>
         <p>Quieres mejorar tu perfil profesional y acceder a mejores oportunidades.</p>
       </div>
+
+      <!-- Card 3: Residencia — pasaporte/documento -->
       <div class="fit-card animate-on-scroll" data-delay="280">
-        <span class="fit-dot"></span>
+        <span class="fit-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 7c0-1.1.9-2 2-2h10a2 2 0 0 1 2 2v12H5V7Z"/>
+            <path d="M14 2v4"/>
+            <path d="M10 2v4"/>
+            <circle cx="12" cy="13" r="2"/>
+            <path d="M9 18h6"/>
+          </svg>
+        </span>
         <p>Buscas fortalecer tu camino hacia la residencia con una preparación más estratégica.</p>
       </div>
+
+      <!-- Card 4: Inglés no refleja potencial — chat/conversación -->
       <div class="fit-card animate-on-scroll" data-delay="380">
-        <span class="fit-dot"></span>
+        <span class="fit-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>
+            <line x1="9" x2="15" y1="10" y2="10"/>
+            <line x1="9" x2="13" y1="14" y2="14"/>
+          </svg>
+        </span>
         <p>Sientes que tu inglés no refleja todo tu potencial en el examen.</p>
       </div>
+
+      <!-- Card 5: Ya estudiaste antes — refresh/segundo intento -->
       <div class="fit-card animate-on-scroll" data-delay="480">
-        <span class="fit-dot"></span>
+        <span class="fit-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+            <path d="M21 3v5h-5"/>
+            <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+            <path d="M8 16H3v5"/>
+          </svg>
+        </span>
         <p>Ya estudiaste antes, pero todavía no logras el resultado que necesitas.</p>
       </div>
+
+      <!-- Card 6: Ruta clara — diana/objetivo -->
       <div class="fit-card animate-on-scroll" data-delay="580">
-        <span class="fit-dot"></span>
+        <span class="fit-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <circle cx="12" cy="12" r="6"/>
+            <circle cx="12" cy="12" r="2"/>
+          </svg>
+        </span>
         <p>Quieres una ruta clara, acompañamiento real y práctica enfocada en resultados.</p>
       </div>
     </div>
@@ -968,7 +1229,15 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
         </div>
         <p>“Lo que más me ayudó fue tener una ruta clara y acompañamiento constante. Dejé de practicar por practicar y empecé a prepararme con estrategia.”</p>
+        <div class="testimonial-author">
+          <img src="https://canaway.com/wp-content/uploads/2025/10/freepik__expand__34149.jpeg" alt="Carolina M." class="testimonial-avatar">
+          <div>
+            <div class="testimonial-name">Carolina M.</div>
+            <div class="testimonial-location">Estudiante en Calgary</div>
+          </div>
+        </div>
       </div>
+
       <div class="testimonial-card animate-on-scroll animate-scale" data-delay="280">
         <div class="testimonial-quote-mark" aria-hidden="true">”</div>
         <div class="testimonial-stars" aria-label="5 de 5 estrellas">
@@ -979,7 +1248,15 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
         </div>
         <p>“Sentí que por fin estaba trabajando todas mis habilidades de forma correcta. Eso me dio mucha más confianza para rendir el examen.”</p>
+        <div class="testimonial-author">
+          <img src="https://canaway.com/wp-content/uploads/2025/10/Jaime-20.jpg" alt="Daniel R." class="testimonial-avatar">
+          <div>
+            <div class="testimonial-name">Daniel R.</div>
+            <div class="testimonial-location">Estudiante en Toronto</div>
+          </div>
+        </div>
       </div>
+
       <div class="testimonial-card animate-on-scroll" data-delay="460">
         <div class="testimonial-quote-mark" aria-hidden="true">”</div>
         <div class="testimonial-stars" aria-label="5 de 5 estrellas">
@@ -990,6 +1267,13 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
         </div>
         <p>“No solo mejoré mi nivel. También entendí cómo responder mejor en el examen y cómo enfocarme en el puntaje que necesitaba para mi objetivo.”</p>
+        <div class="testimonial-author">
+          <img src="https://canaway.com/wp-content/uploads/2025/10/freepik__expand__34150.jpeg" alt="Andrea L." class="testimonial-avatar">
+          <div>
+            <div class="testimonial-name">Andrea L.</div>
+            <div class="testimonial-location">Estudiante en Vancouver</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1111,14 +1395,17 @@
       </button>
     </div>
 
-    <div class="video-placeholder animate-on-scroll animate-scale" data-delay="200">
-      <div class="video-play" aria-hidden="true">
+    <div class="video-thumb animate-on-scroll animate-scale" data-delay="200" onclick="alert('Aquí puedes incrustar tu video real (YouTube, Vimeo, etc.)')">
+      <img src="https://raw.githubusercontent.com/xultun/canaway/main/2148369610.jpg" alt="Tips estratégicos para IELTS y CELPIP" />
+      <div class="video-thumb__play" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="currentColor">
           <path d="M8 5v14l11-7z"/>
         </svg>
       </div>
-      <h4>Video o reel explicativo</h4>
-      <p>Aquí puedes incrustar un video de autoridad o una clase breve con tips estratégicos.</p>
+      <div class="video-thumb__caption">
+        <div class="video-thumb__title">Estrategias para subir tu puntaje</div>
+        <div class="video-thumb__sub">Tips de profesores expertos en IELTS y CELPIP</div>
+      </div>
     </div>
   </div>
 </section>
@@ -1230,6 +1517,48 @@ document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(e
   };
   window.addEventListener('scroll', trigger, { passive: true });
   trigger();
+})();
+
+/* Carrusel de profesores — auto-rotación + dots + pause-on-hover */
+(function() {
+  const carousel = document.getElementById('professorCarousel');
+  if (!carousel) return;
+  const cards = carousel.querySelectorAll('.professor-card');
+  const dots = carousel.querySelectorAll('.professor-carousel__dots button');
+  if (cards.length < 2) return;
+
+  let current = 0;
+  let intervalId = null;
+  const ROTATE_MS = 5000;
+
+  function show(index) {
+    cards.forEach((c, i) => c.classList.toggle('active', i === index));
+    dots.forEach((d, i) => d.classList.toggle('active', i === index));
+    current = index;
+  }
+  function next() { show((current + 1) % cards.length); }
+  function startAutoplay() {
+    stopAutoplay();
+    intervalId = setInterval(next, ROTATE_MS);
+  }
+  function stopAutoplay() {
+    if (intervalId) { clearInterval(intervalId); intervalId = null; }
+  }
+
+  dots.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      const idx = parseInt(dot.getAttribute('data-index'));
+      show(idx);
+      startAutoplay();
+    });
+  });
+
+  carousel.addEventListener('mouseenter', stopAutoplay);
+  carousel.addEventListener('mouseleave', startAutoplay);
+  carousel.addEventListener('focusin', stopAutoplay);
+  carousel.addEventListener('focusout', startAutoplay);
+
+  startAutoplay();
 })();
 
 console.log('%c✅ Canaway IELTS / CELPIP — Landing premium dark', 'color:#DB1709; font-weight:700; font-size:13px;');
