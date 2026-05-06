@@ -3,15 +3,16 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Canaway — Asesoría Especial IELTS y CELPIP</title>
+<title>Canaway — Impulsa tu vida profesional internacional con inglés y francés</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
-  /* ─── TOKENS ───────────────────────────────────────── */
+  /* ─── TOKENS ─────────────────────────────────────────── */
   :root {
     --red: #DB1709;
     --red-dark: #721515;
-    --red-light: #ff5c4d;
     --red-pale: #fff0ee;
+    --red-pale2: #fde0dc;
+    --grey: #54534F;
     --black: #1a1a1a;
     --white: #ffffff;
     --bg: #ffffff;
@@ -29,7 +30,7 @@
   html { scroll-behavior: smooth; }
   body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
 
-  /* ─── ANIMACIONES ──────────────────────────────────── */
+  /* ─── ANIMACIONES AVANZADAS MODERNAS ─────────────────── */
   @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(40px); }
     to { opacity: 1; transform: translateY(0); }
@@ -38,38 +39,70 @@
     from { opacity: 0; transform: scale(0.92) translateY(20px); }
     to { opacity: 1; transform: scale(1) translateY(0); }
   }
+  @keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-40px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes slideInRight {
+    from { opacity: 0; transform: translateX(40px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
   @keyframes heroPop {
     0% { opacity: 0; transform: translateY(30px) scale(0.95); }
     100% { opacity: 1; transform: translateY(0) scale(1); }
   }
+
   .animate-on-scroll {
     opacity: 0;
     transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .animate-on-scroll.visible { animation: fadeInUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
   .animate-scale.visible { animation: fadeInScale 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+  .animate-left.visible { animation: slideInLeft 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+  .animate-right.visible { animation: slideInRight 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
 
+  /* Hero entrance */
   .hero-content > * { animation: heroPop 0.9s cubic-bezier(0.4, 0, 0.2, 1) backwards; }
-  .hero-content .hero-eyebrow { animation-delay: 80ms; }
-  .hero-content h1 { animation-delay: 200ms; }
-  .hero-content > p { animation-delay: 380ms; }
-  .hero-content ul { animation-delay: 560ms; }
+  .hero-content h1 { animation-delay: 100ms; }
+  .hero-content p { animation-delay: 300ms; }
+  .hero-content ul { animation-delay: 500ms; }
+
+  /* Hover ultra-moderno premium */
+  .ruta-card, .metodo-card, .testimonial-card, .beneficio-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .ruta-card:hover, .metodo-card:hover, .testimonial-card:hover, .beneficio-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 25px 50px -12px rgba(219, 23, 9, 0.18);
+    border-color: var(--red);
+  }
 
   button {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
   button:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 30px -10px rgba(219, 23, 9, 0.25);
   }
 
-  /* ─── HERO — variante LIGHT (consistente con landing principal) ─ */
-  .hero {
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(135deg, #fff0ee 0%, #f7f6f4 100%);
-    color: var(--text);
-    padding: 120px 24px 100px;
+  /* Glassmorphism reforzado para look ultra moderno */
+  .form-card, .ruta-card, .metodo-card, .testimonial-card, .beneficio-card {
+    backdrop-filter: blur(16px);
   }
+
+  /* STATS counters */
+  .stat-number {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ─── HERO ───────────────────────────────────────────── */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #fff0ee 0%, #f7f6f4 100%);
+    position: relative; overflow: hidden;
+    padding: 140px 24px 100px;
+  }
+  /* Imagen profesional de Toronto como capa de fondo */
   .hero::before {
     content: '';
     position: absolute; inset: 0; z-index: 0;
@@ -79,6 +112,7 @@
     opacity: 0.22;
     filter: saturate(0.95);
   }
+  /* Capa de degradado sobre la imagen para mejorar legibilidad y look profesional */
   .hero::after {
     content: '';
     position: absolute; inset: 0; z-index: 0;
@@ -88,17 +122,45 @@
     pointer-events: none;
   }
   .hero-grid {
-    position: relative;
-    z-index: 1;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 64px;
     align-items: center;
-    max-width: 1180px;
+    max-width: 1100px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
   }
-  @media (max-width: 960px) {
-    .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+  .hero-content h1 {
+    font-family: 'Poppins', sans-serif; font-weight: 700;
+    font-size: clamp(2.1rem, 4.8vw, 3.4rem);
+    line-height: 1.12;
+    letter-spacing: -0.03em; color: var(--black);
+  }
+  .hero-content h1 em { font-style: normal; color: var(--red); }
+  .hero-content p {
+    margin-top: 20px; font-size: 1.05rem; line-height: 1.75;
+    color: var(--text-soft); max-width: 520px;
+  }
+  .hero-content ul {
+    margin-top: 32px;
+    list-style: none;
+    font-size: 1.02rem;
+    line-height: 1.7;
+  }
+  .hero-content ul li {
+    display: flex; gap: 12px; margin-bottom: 14px; align-items: flex-start;
+  }
+  .hero-content ul li::before {
+    content: "✓";
+    color: var(--red);
+    font-weight: 700;
+    font-size: 1.3rem;
+    line-height: 1;
+    margin-top: 2px;
   }
   .hero-eyebrow {
     display: inline-block;
@@ -114,183 +176,324 @@
     margin-bottom: 28px;
     box-shadow: 0 2px 8px rgba(219,23,9,0.3);
   }
-  .hero-content h1 {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: clamp(2.1rem, 4.6vw, 3.3rem);
-    line-height: 1.13;
-    letter-spacing: -0.025em;
-    color: var(--black);
-  }
-  .hero-content h1 em {
-    font-style: normal;
-    color: var(--red);
-  }
-  .hero-content > p {
-    margin-top: 20px;
-    font-size: 1.05rem;
-    line-height: 1.75;
-    color: var(--text-soft);
-    max-width: 540px;
-  }
-  .hero-bullets {
-    margin-top: 32px;
-    list-style: none;
-    font-size: 1rem;
-    line-height: 1.7;
-  }
-  .hero-bullets li {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 14px;
-    align-items: flex-start;
-    color: var(--text);
-  }
-  .hero-bullets li::before {
-    content: "✓";
-    color: var(--red);
-    font-weight: 700;
-    font-size: 1.3rem;
-    line-height: 1;
-    margin-top: 2px;
-    flex-shrink: 0;
-  }
 
-  /* ─── FORMULARIO ───────────────────────────────────── */
+  /* FORMULARIO */
   .form-card {
     background: var(--white);
-    color: var(--text);
     border-radius: 28px;
     padding: 32px;
     box-shadow: var(--shadow-md);
     border: 1px solid var(--border);
   }
-  .form-eyebrow {
-    display: inline-block;
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.74rem;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--red);
-    margin-bottom: 10px;
-  }
-  .form-card h2 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.45rem;
-    font-weight: 700;
-    line-height: 1.25;
-    color: var(--black);
-    margin-bottom: 14px;
-  }
-  .form-card .form-desc {
-    font-size: 0.92rem;
-    line-height: 1.65;
+  .form-card .form-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.6;
     color: var(--text-soft);
-    margin-bottom: 20px;
-  }
-  .price-box {
-    background: linear-gradient(135deg, var(--red-pale) 0%, #fde4e1 100%);
-    border-radius: 16px;
-    padding: 16px 18px;
-    margin-bottom: 24px;
-    border: 1px solid rgba(219,23,9,0.12);
-  }
-  .price-box .price-label {
-    display: block;
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 700;
-    color: var(--red-dark);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-  }
-  .price-box .price-amount {
-    display: block;
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.7rem;
-    font-weight: 700;
-    color: var(--black);
-    line-height: 1.1;
-    margin-top: 4px;
-  }
-  .price-box .price-note {
-    display: block;
-    font-size: 0.78rem;
-    color: var(--text-soft);
-    margin-top: 8px;
-    line-height: 1.5;
+    margin-bottom: 28px;
   }
   .form-card form {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 22px;
   }
   .form-card input,
   .form-card select {
     width: 100%;
     border: 1px solid #e5e5e4;
-    border-radius: 14px;
-    padding: 15px 18px;
+    border-radius: 16px;
+    padding: 18px 20px;
     font-size: 0.95rem;
-    font-family: 'Inter', sans-serif;
-    color: var(--text);
     outline: none;
-    background: var(--white);
     transition: border-color var(--transition), box-shadow 0.3s ease;
   }
-  .form-card select { cursor: pointer; }
   .form-card input:focus,
   .form-card select:focus {
     border-color: var(--red);
-    box-shadow: 0 0 0 4px rgba(219,23,9,0.12);
+    box-shadow: 0 0 0 4px rgba(219,23,9,0.15);
   }
-  .form-submit {
-    margin-top: 6px;
-    width: 100%;
-    background: var(--red);
-    color: var(--white);
-    border: none;
-    border-radius: 14px;
-    padding: 17px;
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
+  .program-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .program-options button {
+    flex: 1 1 auto;
+    min-width: 140px;
+    padding: 12px 16px;
+    border: 2px solid var(--border);
+    background: var(--white);
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
     cursor: pointer;
+    transition: all var(--transition);
+  }
+  .program-options button.active,
+  .program-options button:hover {
+    border-color: var(--red);
+    background: var(--red-pale);
+    color: var(--red-dark);
+    transform: scale(1.03);
+  }
+
+  /* STATS */
+  .stats-band {
+    background: var(--white);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 24px;
+  }
+  .stats-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 32px;
+  }
+  .stat-item {
+    text-align: center;
+    min-width: 170px;
+    flex: 1;
+  }
+  .stat-item:not(:last-child) {
+    border-right: 1px solid rgba(219, 23, 9, 0.25);
+    padding-right: 32px;
+  }
+  .stat-number {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    color: var(--black);
+    line-height: 1;
+  }
+  .stat-text {
+    font-size: 0.85rem;
+    color: var(--text-soft);
+    margin-top: 6px;
+    line-height: 1.4;
+  }
+
+  /* TÍTULOS Y SECCIONES */
+  .section-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--black);
+  }
+  section { padding: 96px 24px; }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* Cards generales */
+  .rutas-grid, .metodologia-grid, .testimonials, .beneficios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 24px;
+    margin-top: 48px;
+  }
+  /* Testimonios — grid 2x2 limpio en desktop con 4 items, 1 col en mobile */
+  .testimonials {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 720px) {
+    .testimonials { grid-template-columns: 1fr; }
+  }
+  .ruta-card, .metodo-card, .testimonial-card, .beneficio-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px 28px;
+    position: relative;
+  }
+  /* ─── TARJETAS DE RUTA — diseño profesional con icono + tag ─── */
+  .ruta-card {
+    display: flex;
+    flex-direction: column;
+  }
+  .ruta-card__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .ruta-icon {
+    width: 56px;
+    height: 56px;
+    background: var(--red-pale);
+    color: var(--red);
+    border-radius: 14px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .ruta-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+  .ruta-card:hover .ruta-icon {
+    background: var(--red);
+    color: var(--white);
+    transform: scale(1.06) rotate(-4deg);
+  }
+  .ruta-tag {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--red);
+    background: var(--red-pale);
+    padding: 7px 14px;
+    border-radius: 100px;
+    line-height: 1;
+  }
+  .ruta-card p {
+    flex-grow: 1;
+  }
+  .ruta-btn {
+    margin-top: 28px;
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
     gap: 10px;
-    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+    padding: 14px 26px;
+    background: var(--red-pale);
+    color: var(--red);
+    border: none;
+    border-radius: 100px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .form-submit:hover {
-    background: var(--red-dark);
-    box-shadow: 0 12px 28px -8px rgba(219,23,9,0.5);
-    transform: translateY(-2px);
+  .ruta-btn .arrow-icon {
+    display: inline-flex;
+    align-items: center;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .form-submit svg { transition: transform 0.3s ease; }
-  .form-submit:hover svg { transform: translateX(4px); }
-  .form-note {
-    margin-top: 16px;
-    font-size: 0.78rem;
+  .ruta-btn:hover {
+    background: var(--red);
+    color: var(--white);
+    box-shadow: 0 12px 28px -8px rgba(219, 23, 9, 0.45);
+  }
+  .ruta-btn:hover .arrow-icon {
+    transform: translateX(5px);
+  }
+  .ruta-card h3, .metodo-card h4, .beneficio-card h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .ruta-card p, .metodo-card p, .testimonial-card p, .beneficio-card p {
+    font-size: 0.93rem;
+    line-height: 1.7;
     color: var(--text-soft);
-    line-height: 1.55;
-    text-align: center;
   }
-  .privacy-note {
+
+  /* ─── ICONOS PARA TARJETAS DE BENEFICIO ───────────────── */
+  .beneficio-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    background: var(--red-pale);
+    color: var(--red);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 22px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .beneficio-icon svg {
+    width: 30px;
+    height: 30px;
+  }
+  .beneficio-card:hover .beneficio-icon {
+    background: var(--red);
+    color: var(--white);
+    transform: scale(1.08) rotate(-4deg);
+  }
+
+  .testimonial-author {
+    margin-top: 28px;
     display: flex;
     align-items: center;
-    gap: 8px;
-    justify-content: center;
-    margin-top: 12px;
-    font-size: 0.76rem;
-    color: var(--text-soft);
+    gap: 12px;
   }
-  .privacy-note svg { color: var(--red); flex-shrink: 0; }
+  .testimonial-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--red-pale);
+  }
+  .testimonial-name { font-weight: 600; color: var(--black); }
+  .testimonial-location { font-size: 0.85rem; color: var(--text-soft); }
 
-  /* ─── TÍTULOS / SECCIONES ──────────────────────────── */
-  section { padding: 96px 24px; }
-  .container { max-width: 1180px; margin: 0 auto; }
+  /* CTA FINAL */
+  .cta-final {
+    background: var(--black);
+    color: white;
+    padding: 80px 24px;
+    border-radius: 28px;
+    margin: 40px 24px;
+    text-align: center;
+  }
+  .cta-final h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    margin-bottom: 24px;
+    line-height: 1.2;
+  }
+  .cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
+  }
+  /* Botones de ruta con flecha hacia la derecha */
+  .cta-buttons button {
+    background: var(--white);
+    color: var(--black);
+    border: none;
+    padding: 16px 28px;
+    border-radius: 100px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cta-buttons button .arrow-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--red);
+  }
+  .cta-buttons button:hover .arrow-icon {
+    transform: translateX(5px);
+  }
+
+  @media (max-width: 768px) {
+    .stats-container { gap: 24px; }
+    .stat-item { border-right: none !important; padding-right: 0 !important; }
+    .rutas-grid, .metodologia-grid, .testimonials, .beneficios-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ─── EYEBROW DE SECCIÓN ───────────────────────────── */
   .section-eyebrow {
     display: inline-block;
     font-family: 'Poppins', sans-serif;
@@ -301,122 +504,33 @@
     color: var(--red);
     margin-bottom: 14px;
   }
-  .section-eyebrow.on-dark { color: var(--red-light); }
-  .section-title {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 700;
-    font-size: clamp(1.7rem, 3.4vw, 2.4rem);
-    line-height: 1.18;
-    letter-spacing: -0.022em;
-    color: var(--black);
-  }
-  .section-title.on-dark { color: var(--white); }
-  .section-lead {
-    font-size: 1.05rem;
-    line-height: 1.75;
-    color: var(--text-soft);
-    max-width: 660px;
-    margin-top: 14px;
-  }
-  .section-lead.on-dark { color: rgba(255,255,255,0.78); }
 
-  /* ─── TRUST BAND ───────────────────────────────────── */
-  .trust-band {
-    background: var(--bg-alt);
-    border-bottom: 1px solid var(--border);
-    padding: 36px 24px;
-  }
-  .trust-grid {
-    max-width: 1180px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 14px;
-  }
-  .trust-item {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 18px 20px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 0.92rem;
-    font-weight: 500;
-    color: var(--text);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-    transition: all 0.3s ease;
-  }
-  .trust-item:hover {
-    transform: translateY(-3px);
-    border-color: var(--red);
-    box-shadow: 0 12px 24px -8px rgba(219,23,9,0.15);
-  }
-  .trust-check {
-    width: 22px;
-    height: 22px;
-    border-radius: 50%;
+  /* ─── ICONO DE METODOLOGÍA ─────────────────────────── */
+  .metodo-icon {
+    width: 52px;
+    height: 52px;
     background: var(--red-pale);
     color: var(--red);
+    border-radius: 12px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
-  }
-  .trust-check svg { width: 13px; height: 13px; }
-
-  /* ─── PROGRAM FIT — para ti si... ──────────────────── */
-  .fit-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 16px;
-    margin-top: 44px;
-  }
-  .fit-card {
-    background: var(--white);
-    border: 1.5px solid var(--border);
-    border-radius: 20px;
-    padding: 22px 24px;
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
+    margin-bottom: 18px;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .fit-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--red);
-    box-shadow: 0 16px 36px -12px rgba(219,23,9,0.18);
+  .metodo-icon svg {
+    width: 26px;
+    height: 26px;
   }
-  .fit-card p {
-    font-size: 0.96rem;
-    line-height: 1.65;
-    color: var(--text);
+  .metodo-card:hover .metodo-icon {
+    background: var(--red);
+    color: var(--white);
+    transform: scale(1.06) rotate(-4deg);
   }
 
-  /* ─── TESTIMONIOS — fondo rojo pálido (consistente con landing principal) ── */
-  .testimonials-section {
-    background: var(--bg-pale);
-    color: var(--text);
-  }
-  .testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 22px;
-    margin-top: 44px;
-  }
+  /* ─── TESTIMONIOS — comilla decorativa + estrellas ─── */
   .testimonial-card {
-    position: relative;
-    background: var(--white);
-    border: 1.5px solid var(--border);
-    border-radius: var(--radius);
-    padding: 30px 28px;
     overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .testimonial-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--red);
-    box-shadow: 0 20px 50px -12px rgba(219,23,9,0.18);
   }
   .testimonial-quote-mark {
     position: absolute;
@@ -439,291 +553,125 @@
     position: relative;
     z-index: 1;
   }
-  .testimonial-stars svg { width: 16px; height: 16px; }
-  .testimonial-card p {
+  .testimonial-stars svg {
+    width: 16px;
+    height: 16px;
+  }
+  .testimonial-card p,
+  .testimonial-card .testimonial-author {
     position: relative;
     z-index: 1;
-    color: var(--text);
-    font-size: 0.96rem;
-    line-height: 1.7;
   }
-  .testimonial-banner {
-    margin-top: 36px;
-    border-radius: 22px;
-    border: 1.5px solid rgba(219,23,9,0.25);
+
+  /* ─── STRIP DE CONFIANZA ──────────────────────────── */
+  .trust-strip {
     background: var(--white);
-    padding: 24px 32px;
+    padding: 40px 24px 36px;
     text-align: center;
-    color: var(--red-dark);
-    font-size: 1rem;
-    line-height: 1.6;
-    font-weight: 500;
+    border-bottom: 1px solid var(--border);
   }
-
-  /* ─── VALUE PROP ───────────────────────────────────── */
-  .value-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.3fr;
+  .trust-strip__label {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 24px;
+  }
+  .trust-logos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     gap: 56px;
-    align-items: start;
+    max-width: 900px;
+    margin: 0 auto;
   }
-  @media (max-width: 900px) {
-    .value-grid { grid-template-columns: 1fr; gap: 32px; }
+  .trust-logos span {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #b0adab;
+    transition: color 0.3s ease, transform 0.3s ease;
+    cursor: default;
   }
-  .value-content p {
-    font-size: 1.05rem;
-    line-height: 1.78;
+  .trust-logos span:hover {
     color: var(--text);
-    margin-bottom: 18px;
+    transform: translateY(-2px);
   }
-  .value-content p:last-child { margin-bottom: 0; }
+  @media (max-width: 600px) {
+    .trust-logos { gap: 28px; }
+    .trust-logos span { font-size: 1rem; }
+  }
 
-  /* ─── INCLUDES — qué recibirás (con iconos) ────────── */
-  .includes-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 22px;
-    margin-top: 44px;
+  /* ─── NOTA DE PRIVACIDAD EN FORMULARIO ────────────── */
+  .privacy-note {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 18px;
+    font-size: 0.78rem;
+    color: var(--text-soft);
+    line-height: 1.4;
   }
-  .include-card {
+  .privacy-note svg {
+    flex-shrink: 0;
+    color: var(--red);
+  }
+
+  /* ─── CÓMO FUNCIONA — pasos numerados ─────────────── */
+  .pasos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .paso-card {
     background: var(--white);
     border: 1.5px solid var(--border);
     border-radius: var(--radius);
-    padding: 30px 26px;
+    padding: 28px 24px;
+    position: relative;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .include-card:hover {
+  .paso-card:hover {
     transform: translateY(-6px);
+    box-shadow: 0 20px 40px -12px rgba(219, 23, 9, 0.18);
     border-color: var(--red);
-    box-shadow: 0 20px 40px -12px rgba(219,23,9,0.18);
   }
-  .include-icon {
-    width: 56px;
-    height: 56px;
-    border-radius: 14px;
-    background: var(--red-pale);
-    color: var(--red);
+  .paso-num {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .include-icon svg { width: 28px; height: 28px; }
-  .include-card:hover .include-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
     background: var(--red);
     color: var(--white);
-    transform: scale(1.06) rotate(-4deg);
-  }
-  .include-card h3 {
     font-family: 'Poppins', sans-serif;
-    font-size: 1.18rem;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-bottom: 18px;
+  }
+  .paso-card h4 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.08rem;
     font-weight: 600;
+    margin-bottom: 10px;
     color: var(--black);
-    margin-bottom: 12px;
     line-height: 1.3;
   }
-  .include-card p {
-    font-size: 0.93rem;
-    line-height: 1.7;
-    color: var(--text-soft);
-  }
-
-  /* ─── AUTHORITY + VIDEO ────────────────────────────── */
-  .authority-section {
-    padding: 96px 24px;
-  }
-  .authority-wrap {
-    max-width: 1180px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 36px;
-    background: linear-gradient(135deg, var(--red-pale) 0%, #f7f6f4 100%);
-    border-radius: 32px;
-    padding: 56px;
-  }
-  @media (max-width: 900px) {
-    .authority-wrap { grid-template-columns: 1fr; padding: 36px 28px; gap: 28px; }
-  }
-  .authority-content p {
-    font-size: 1.02rem;
-    line-height: 1.75;
-    color: var(--text);
-    margin-bottom: 16px;
-  }
-  .authority-btn {
-    margin-top: 12px;
-    background: var(--black);
-    color: var(--white);
-    border: none;
-    border-radius: 100px;
-    padding: 16px 30px;
-    font-weight: 600;
-    font-size: 0.98rem;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    transition: all 0.3s ease;
-  }
-  .authority-btn:hover {
-    background: #000;
-    box-shadow: 0 14px 28px -8px rgba(0,0,0,0.3);
-  }
-  .authority-btn svg { transition: transform 0.3s ease; }
-  .authority-btn:hover svg { transform: translateX(4px); }
-
-  /* ─── FAQ — fondo claro ────────────────────────────── */
-  .faq-section {
-    background: var(--bg-alt);
-    color: var(--text);
-  }
-  .faq-section .container {
-    max-width: 860px;
-    text-align: center;
-  }
-  .faq-list {
-    margin-top: 44px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    text-align: left;
-  }
-  .faq-item {
-    background: var(--white);
-    border: 1.5px solid var(--border);
-    border-radius: 18px;
-    overflow: hidden;
-    transition: all 0.3s ease;
-  }
-  .faq-item[open] {
-    border-color: var(--red);
-    box-shadow: 0 12px 28px -10px rgba(219,23,9,0.18);
-  }
-  .faq-item summary {
-    list-style: none;
-    cursor: pointer;
-    padding: 22px 26px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 1.02rem;
-    color: var(--black);
-    line-height: 1.4;
-    transition: color 0.3s ease;
-  }
-  .faq-item summary::-webkit-details-marker { display: none; }
-  .faq-item summary:hover { color: var(--red); }
-  .faq-toggle {
-    flex-shrink: 0;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: var(--red-pale);
-    color: var(--red);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.4rem;
-    line-height: 1;
-    font-weight: 400;
-    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .faq-item[open] .faq-toggle {
-    transform: rotate(45deg);
-    background: var(--red);
-    color: var(--white);
-  }
-  .faq-item .faq-answer {
-    padding: 0 26px 24px;
-    color: var(--text-soft);
-    line-height: 1.7;
-    font-size: 0.95rem;
-  }
-
-  /* ─── FINAL CTA — negro consistente con landing principal ─ */
-  .final-cta-section {
-    padding: 60px 24px 96px;
-  }
-  .final-cta {
-    max-width: 1180px;
-    margin: 0 auto;
-    background: var(--black);
-    color: var(--white);
-    border-radius: 32px;
-    padding: 64px 40px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 20px 60px -20px rgba(0,0,0,0.3);
-  }
-  .final-cta::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 60% 80% at 50% 100%, rgba(219,23,9,0.18) 0%, transparent 55%);
-    pointer-events: none;
-  }
-  .final-cta > * { position: relative; z-index: 1; }
-  .final-cta h2 {
-    font-family: 'Poppins', sans-serif;
-    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    margin-bottom: 16px;
-  }
-  .final-cta p {
-    max-width: 620px;
-    margin: 0 auto 36px;
-    font-size: 1.05rem;
+  .paso-card p {
+    font-size: 0.9rem;
     line-height: 1.65;
-    color: rgba(255,255,255,0.78);
+    color: var(--text-soft);
   }
-  .final-cta__buttons {
-    display: flex;
-    gap: 14px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .final-cta__buttons button {
-    border: none;
-    cursor: pointer;
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: 0.98rem;
-    padding: 16px 30px;
-    border-radius: 100px;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .btn-primary {
-    background: var(--red);
-    color: var(--white);
-    box-shadow: 0 10px 24px -6px rgba(219,23,9,0.5);
-  }
-  .btn-primary:hover {
-    background: var(--red-dark);
-    box-shadow: 0 14px 32px -6px rgba(219,23,9,0.6);
-  }
-  .btn-secondary {
-    background: rgba(255,255,255,0.08);
-    color: var(--white);
-    border: 1px solid rgba(255,255,255,0.18) !important;
-    backdrop-filter: blur(8px);
-  }
-  .btn-secondary:hover {
-    background: rgba(255,255,255,0.14);
-  }
-  .final-cta__buttons svg { transition: transform 0.3s ease; }
-  .final-cta__buttons button:hover svg { transform: translateX(4px); }
 
-  /* ─── CTA FLOTANTE MOBILE ──────────────────────────── */
+  /* ─── CTA FLOTANTE MOBILE ─────────────────────────── */
   .mobile-cta {
     display: none;
     position: fixed;
@@ -739,7 +687,7 @@
     font-weight: 600;
     font-size: 0.95rem;
     text-decoration: none;
-    box-shadow: 0 12px 28px rgba(219, 23, 9, 0.5);
+    box-shadow: 0 12px 28px rgba(219, 23, 9, 0.45);
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.35s ease, transform 0.35s ease;
@@ -751,27 +699,27 @@
     opacity: 1;
     transform: translateY(0);
   }
-  .mobile-cta svg { transition: transform 0.3s ease; }
-  .mobile-cta:hover svg { transform: translateX(4px); }
+  .mobile-cta svg {
+    transition: transform 0.3s ease;
+  }
+  .mobile-cta:hover svg {
+    transform: translateX(4px);
+  }
   @media (max-width: 768px) {
     .mobile-cta { display: inline-flex; }
-    .final-cta-section { padding-bottom: 110px; }
-  }
-
-  /* ─── RESPONSIVE ───────────────────────────────────── */
-  @media (max-width: 768px) {
-    section { padding: 72px 24px; }
-    .authority-wrap { padding: 32px 24px; }
-    .final-cta { padding: 48px 28px; }
+    /* Espacio extra abajo en mobile para que la barra flotante no tape contenido */
+    .cta-final { margin-bottom: 80px; }
   }
 
   /* ─── CARRUSEL DE PROFESORES EN HERO ──────────────── */
   .professor-carousel {
     margin-top: 32px;
-    max-width: 540px;
+    max-width: 520px;
     position: relative;
   }
   .professor-carousel__track {
+    /* Grid con un solo área hace que todas las cards se apilen
+       en el mismo espacio, y la más grande dicta el alto */
     display: grid;
     grid-template-areas: "card";
   }
@@ -793,6 +741,7 @@
     opacity: 0;
     transform: translateY(8px);
     pointer-events: none;
+    max-width: 520px;
   }
   .professor-card.active {
     opacity: 1;
@@ -811,31 +760,34 @@
     border: 3px solid var(--red-pale);
     flex-shrink: 0;
   }
-  .professor-card__body { flex: 1; min-width: 0; }
-  .professor-card__name {
-    display: block;
+  .professor-card__body {
+    flex: 1;
+    min-width: 0;
+  }
+  .professor-card__tag {
+    display: inline-block;
     font-family: 'Poppins', sans-serif;
-    font-size: 1rem;
+    font-size: 0.62rem;
     font-weight: 700;
-    color: var(--black);
-    line-height: 1.2;
-    margin-bottom: 6px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 4px;
   }
   .professor-card__quote {
     font-size: 0.86rem;
-    line-height: 1.5;
+    line-height: 1.45;
     color: var(--text);
-    margin-bottom: 6px;
+    margin-bottom: 4px;
     font-style: italic;
   }
-  .professor-card__role {
-    display: block;
-    font-family: 'Inter', sans-serif;
+  .professor-card__name {
     font-size: 0.78rem;
     color: var(--text-soft);
     font-weight: 500;
-    line-height: 1.2;
   }
+
+  /* Dots de navegación del carrusel */
   .professor-carousel__dots {
     display: flex;
     gap: 8px;
@@ -856,194 +808,290 @@
   .professor-carousel__dots button:hover {
     background: rgba(219,23,9,0.5);
     transform: none;
+    box-shadow: none;
   }
   .professor-carousel__dots button.active {
     background: var(--red);
     width: 26px;
     border-radius: 4px;
     transform: none;
+    box-shadow: none;
   }
 
-  /* ─── ICONOS EN FIT-CARDS ─────────────────────────── */
-  .fit-card {
-    align-items: center;
+  /* ─── SECCIÓN AMBIENTE DE CLASE ───────────────────── */
+  .ambiente-section {
+    background: var(--white);
+    padding: 96px 24px;
   }
-  .fit-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
+  .ambiente-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 56px;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  @media (max-width: 900px) {
+    .ambiente-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+  .ambiente-content h2 { margin-bottom: 16px; }
+  .ambiente-content > p {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--text-soft);
+    margin-bottom: 28px;
+  }
+  .ambiente-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .ambiente-feature {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text);
+    transition: all 0.3s ease;
+  }
+  .ambiente-feature:hover {
+    background: var(--red-pale);
+    border-color: var(--red);
+    transform: translateY(-2px);
+  }
+  .ambiente-feature__icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
     background: var(--red-pale);
     color: var(--red);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s ease;
   }
-  .fit-icon svg { width: 22px; height: 22px; }
-  .fit-card:hover .fit-icon {
+  .ambiente-feature:hover .ambiente-feature__icon {
     background: var(--red);
     color: var(--white);
-    transform: scale(1.06) rotate(-4deg);
   }
-
-  /* ─── TESTIMONIOS — autor con avatar + nombre ────── */
-  .testimonial-author {
-    margin-top: 22px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    position: relative;
-    z-index: 1;
-  }
-  .testimonial-avatar {
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid var(--red-pale);
-    flex-shrink: 0;
-  }
-  .testimonial-name {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    color: var(--black);
-    font-size: 0.92rem;
-    line-height: 1.2;
-  }
-  .testimonial-location {
-    font-size: 0.8rem;
-    color: var(--text-soft);
-    margin-top: 2px;
-  }
-
-  /* ─── VIDEO THUMBNAIL — versión con imagen real ───── */
-  .video-thumb {
+  .ambiente-feature__icon svg { width: 18px; height: 18px; }
+  .ambiente-image {
     position: relative;
     border-radius: 24px;
     overflow: hidden;
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.25);
     aspect-ratio: 4 / 3;
-    cursor: pointer;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-    transition: all 0.4s ease;
   }
-  .video-thumb:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-  }
-  .video-thumb img {
+  .ambiente-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
-  .video-thumb:hover img { transform: scale(1.04); }
-  .video-thumb::after {
+  .ambiente-image::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.55) 100%);
+    background: linear-gradient(135deg, transparent 60%, rgba(219,23,9,0.15) 100%);
     pointer-events: none;
   }
-  .video-thumb__play {
+  /* Floating badge sobre la imagen */
+  .ambiente-badge {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 84px;
-    height: 84px;
+    bottom: 22px;
+    left: 22px;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 100px;
+    padding: 10px 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--black);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    z-index: 1;
+  }
+  .ambiente-badge::before {
+    content: '';
+    width: 9px;
+    height: 9px;
     border-radius: 50%;
+    background: #2bd36b;
+    box-shadow: 0 0 0 3px rgba(43,211,107,0.25);
+    animation: livePulse 2s ease-in-out infinite;
+  }
+  @keyframes livePulse {
+    0%, 100% { box-shadow: 0 0 0 3px rgba(43,211,107,0.25); }
+    50% { box-shadow: 0 0 0 7px rgba(43,211,107,0.0); }
+  }
+
+  /* ─── DECORACIÓN MAPLE LEAF EN CTA FINAL ──────────── */
+  .cta-final { position: relative; overflow: hidden; }
+  .cta-final::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 280px;
+    height: 280px;
+    background: radial-gradient(circle, rgba(219,23,9,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-final::after {
+    content: '';
+    position: absolute;
+    bottom: -60px;
+    left: -60px;
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(219,23,9,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-final > * { position: relative; z-index: 1; }
+
+  /* ─── SECCIÓN SISTEMA CANAWAY ─────────────────────── */
+  .sistema-section {
     background: var(--white);
+    padding: 96px 24px;
+  }
+  .sistema-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.55fr;
+    gap: 56px;
+    align-items: start;
+  }
+  @media (max-width: 900px) {
+    .sistema-grid { grid-template-columns: 1fr; gap: 40px; }
+  }
+  .sistema-content h2 { margin-bottom: 18px; }
+  .sistema-content > p {
+    font-size: 1.02rem;
+    line-height: 1.75;
+    color: var(--text-soft);
+  }
+
+  .sistema-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 600px) {
+    .sistema-cards { grid-template-columns: 1fr; }
+  }
+  .sistema-card {
+    background: var(--white);
+    border: 1.5px solid var(--border);
+    border-radius: 18px;
+    padding: 24px 26px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .sistema-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--red);
+    box-shadow: 0 16px 36px -12px rgba(219, 23, 9, 0.18);
+  }
+  .sistema-card__head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .sistema-check {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--red-pale);
     color: var(--red);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 14px 30px -8px rgba(0,0,0,0.5);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 1;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
   }
-  .video-thumb:hover .video-thumb__play {
-    transform: translate(-50%, -50%) scale(1.08);
+  .sistema-check svg { width: 14px; height: 14px; }
+  .sistema-card:hover .sistema-check {
     background: var(--red);
     color: var(--white);
+    transform: scale(1.1);
   }
-  .video-thumb__play svg {
-    width: 30px;
-    height: 30px;
-    margin-left: 4px;
-  }
-  .video-thumb__caption {
-    position: absolute;
-    bottom: 22px;
-    left: 22px;
-    right: 22px;
-    color: var(--white);
-    z-index: 1;
-  }
-  .video-thumb__title {
+  .sistema-card h4 {
     font-family: 'Poppins', sans-serif;
+    font-size: 1.1rem;
     font-weight: 600;
-    font-size: 1rem;
-    margin-bottom: 4px;
+    color: var(--black);
+    line-height: 1.3;
+    margin: 0;
   }
-  .video-thumb__sub {
-    font-size: 0.82rem;
-    opacity: 0.85;
+  .sistema-card p {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: var(--text-soft);
+    margin: 0;
   }
 </style>
 </head>
 <body>
 
-<!-- HERO — DARK PREMIUM -->
+<!-- HERO -->
 <div class="hero" id="hero-form">
   <div class="hero-grid">
     <div class="hero-content">
-      <span class="hero-eyebrow">Asesoría especial IELTS y CELPIP</span>
-      <h1>Logra el puntaje que puede abrirte nuevas oportunidades laborales y de <em>residencia en Canadá</em></h1>
-      <p>Perfecciona todas las habilidades del idioma con una ruta personalizada y el acompañamiento continuo de una academia canadiense que ya ha guiado a más de 15,000 latinoamericanos a cumplir sus metas en Canadá.</p>
-      <ul class="hero-bullets">
-        <li>Preparación estratégica para alcanzar el puntaje ideal en IELTS y CELPIP según tu objetivo</li>
-        <li>Acompañamiento continuo en speaking, listening, reading y writing</li>
-        <li>Ideal para quienes buscan crecer profesionalmente o fortalecer su camino hacia la residencia</li>
+      <span class="hero-eyebrow">Clases en vivo para adultos y adolescentes</span>
+      <h1>Impulsa tu vida profesional internacional con <em>inglés y francés</em></h1>
+      <p>Clases en vivo para adultos latinoamericanos que quieren mejorar su nivel, prepararse para certificarse y abrir más oportunidades de estudio, trabajo o vida en el extranjero.</p>
+      <ul>
+        <li>Ruta por nivel internacional de A1 a B2</li>
+        <li>Paquetes de 6 meses para avanzar un nivel</li>
+        <li>Pago mensual desde USD 79</li>
+        <li>Atención en español y clases en vivo</li>
       </ul>
 
-      <!-- Carrusel de profesores -->
-      <div class="professor-carousel" id="professorCarousel" aria-label="Profesores expertos en IELTS y CELPIP">
+      <!-- Carrusel de profesores (matching canaway.com) -->
+      <div class="professor-carousel" id="professorCarousel" aria-label="Profesores de Canaway">
         <div class="professor-carousel__track">
           <div class="professor-card active">
-            <img src="https://raw.githubusercontent.com/xultun/canaway/main/Julius.png" alt="Julius M., profesor de IELTS y CELPIP" />
+            <img src="https://raw.githubusercontent.com/xultun/canaway/main/Rosalie.png" alt="Rosalie D., profesora de Canaway" />
             <div class="professor-card__body">
-              <span class="professor-card__name">Julius M.</span>
-              <p class="professor-card__quote">“Mi enfoque es ser directo pero constructivo, ayudando a mis estudiantes a superar sus debilidades y alcanzar sus objetivos con claridad y determinación.”</p>
-              <span class="professor-card__role">Profesor IELTS / CELPIP</span>
+              <span class="professor-card__tag">Profesora de Canaway</span>
+              <p class="professor-card__quote">“Me encanta ver cómo nuestros estudiantes ganan confianza para hablar en cada clase. ¡El progreso es real y constante!”</p>
+              <span class="professor-card__name">Rosalie D. · Profesora certificada</span>
             </div>
           </div>
 
           <div class="professor-card">
-            <img src="https://raw.githubusercontent.com/xultun/canaway/main/Rosalie.png" alt="Rosalie D., profesora de Canaway" />
+            <img src="https://raw.githubusercontent.com/xultun/canaway/main/Julius.png" alt="Julius M., profesor de Canaway" />
             <div class="professor-card__body">
-              <span class="professor-card__name">Rosalie D.</span>
-              <p class="professor-card__quote">“Me encanta ver cómo nuestros estudiantes ganan confianza para responder con seguridad. ¡El progreso es real y constante!”</p>
-              <span class="professor-card__role">Profesora certificada</span>
+              <span class="professor-card__tag">Profesor de Canaway</span>
+              <p class="professor-card__quote">“Mi enfoque es ser directo pero constructivo, ayudando a mis estudiantes a superar sus debilidades y alcanzar sus objetivos con claridad y determinación.”</p>
+              <span class="professor-card__name">Julius M. · Profesor de inglés</span>
             </div>
           </div>
 
           <div class="professor-card">
             <img src="https://raw.githubusercontent.com/xultun/canaway/main/Emma.png" alt="Emma V., profesora de Canaway" />
             <div class="professor-card__body">
-              <span class="professor-card__name">Emma V.</span>
-              <p class="professor-card__quote">“Me encanta crear clases dinámicas y centradas en las necesidades individuales de cada estudiante. ¡Ver cómo ganan fluidez es lo más gratificante!”</p>
-              <span class="professor-card__role">Profesora certificada</span>
+              <span class="professor-card__tag">Profesora de Canaway</span>
+              <p class="professor-card__quote">“Me encanta crear clases dinámicas y centradas en las necesidades individuales de cada estudiante. ¡Ver cómo ganan confianza y fluidez al hablar inglés es lo más gratificante!”</p>
+              <span class="professor-card__name">Emma V. · Profesora certificada</span>
             </div>
           </div>
 
           <div class="professor-card">
             <img src="https://raw.githubusercontent.com/xultun/canaway/main/Divine.png" alt="Divine C., profesora de Canaway" />
             <div class="professor-card__body">
-              <span class="professor-card__name">Divine C.</span>
-              <p class="professor-card__quote">“Me apasiona guiar a mis estudiantes en cada lección, ayudándolos a expresarse con confianza y mejorar día a día.”</p>
-              <span class="professor-card__role">Profesora de inglés</span>
+              <span class="professor-card__tag">Profesora de Canaway</span>
+              <p class="professor-card__quote">“Me apasiona guiar a mis estudiantes en cada lección, ayudándolos a expresarse con confianza y mejorar día a día. ¡Cada progreso, por pequeño que parezca, es un gran logro!”</p>
+              <span class="professor-card__name">Divine C. · Profesora de inglés</span>
             </div>
           </div>
         </div>
@@ -1057,168 +1105,383 @@
       </div>
     </div>
 
-    <!-- FORMULARIO -->
+    <!-- COLUMNA DERECHA: Formulario -->
     <div class="form-card">
-      <span class="form-eyebrow">Empieza hoy</span>
-      <h2>Agenda tu asesoría especial para IELTS y CELPIP</h2>
-      <p class="form-desc">Hablarás con profesores expertos en IELTS y CELPIP, quienes evaluarán tu caso, el puntaje que necesitas y tu objetivo en Canadá para recomendarte la mejor ruta Canaway.</p>
-
-      <div class="price-box">
-        <span class="price-label">Valor de la asesoría</span>
-        <span class="price-amount">USD $15</span>
-        <span class="price-note">Este monto se descuenta de cualquier curso que adquieras con nosotros.</span>
-      </div>
-
+      <p style="font-size:1.35rem; font-weight:600; margin-bottom:8px;">Encuentra el programa ideal para tu meta</p>
+      <p class="form-subtitle">Déjanos tus datos y te recomendamos la mejor opción según tu país de residencia y el programa que te interesa</p>
+      
       <form>
-        <input type="text" placeholder="Nombre completo" required />
+        <input type="text" placeholder="Nombre" required />
+        <input type="tel" placeholder="Número de WhatsApp" required />
         <input type="email" placeholder="Correo electrónico" required />
-        <input type="tel" placeholder="WhatsApp" required />
-        <select required>
-          <option value="">Examen de interés</option>
-          <option>IELTS</option>
-          <option>CELPIP</option>
-          <option>Aún no estoy seguro</option>
-        </select>
-        <select required>
-          <option value="">Objetivo principal</option>
-          <option>Profesional</option>
-          <option>Residencia</option>
-          <option>Ambos</option>
-        </select>
-        <button type="button" class="form-submit" onclick="alert('¡Genial! Te contactaremos para coordinar tu asesoría especial.')">
-          Quiero agendar mi asesoría
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
-            <path d="M5 12h14"/>
-            <path d="m12 5 7 7-7 7"/>
-          </svg>
+        <input type="text" placeholder="País de residencia" required />
+        
+        <div style="margin:8px 0 12px; font-size:0.9rem; color:var(--text-soft);">Programa de interés</div>
+        <div class="program-options">
+          <button type="button" class="active" onclick="toggleProgram(this)">Inglés para adultos</button>
+          <button type="button" onclick="toggleProgram(this)">Inglés para adolescentes</button>
+          <button type="button" onclick="toggleProgram(this)">Francés para principiantes</button>
+        </div>
+        
+        <button type="button" onclick="alert('¡Gracias! Te contactaremos por WhatsApp con tu recomendación personalizada.')" 
+                style="margin-top:12px; width:100%; background:var(--black); color:white; font-weight:600; padding:18px; border-radius:16px; border:none; cursor:pointer; font-size:1.05rem;">
+          Quiero mi recomendación
         </button>
       </form>
-
-      <p class="form-note">Así podrás elegir con mayor claridad la ruta que realmente necesitas, sin pagar programas costosos a ciegas.</p>
       <p class="privacy-note">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14">
           <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
           <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
         </svg>
-        Tus datos están protegidos. Solo te contactamos por la asesoría.
+        Tus datos están protegidos. Solo te contactamos por el programa que elegiste.
       </p>
     </div>
   </div>
 </div>
 
-<!-- TRUST BAND -->
-<div class="trust-band">
-  <div class="trust-grid">
-    <div class="trust-item">
-      <span class="trust-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-      +15,000 latinoamericanos acompañados
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <span class="trust-strip__label">Te preparamos para certificarte en</span>
+  <div class="trust-logos">
+    <span>IELTS</span>
+    <span>Cambridge</span>
+    <span>TOEFL</span>
+    <span>DELF</span>
+    <span>CELPIP</span>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-band">
+  <div class="stats-container">
+    <div class="stat-item">
+      <div class="stat-number" data-target="3"><span class="stat-num">0</span> meses</div>
+      <div class="stat-text">Programas trimestrales continuos</div>
     </div>
-    <div class="trust-item">
-      <span class="trust-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-      Academia canadiense
+    <div class="stat-item">
+      <div class="stat-number" data-target="8"><span class="stat-num">0</span> niveles</div>
+      <div class="stat-text">de elemental a avanzado</div>
     </div>
-    <div class="trust-item">
-      <span class="trust-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-      Preparación en vivo y personalizada
+    <div class="stat-item">
+      <div class="stat-number" data-target="3"><span class="stat-num">0</span> clases</div>
+      <div class="stat-text">por semana<br>clases en vivo con ritmo sostenible</div>
     </div>
-    <div class="trust-item">
-      <span class="trust-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
-      Ruta enfocada en metas reales en Canadá
+    <div class="stat-item">
+      <div class="stat-number" data-target="15000"><span class="stat-num">0</span></div>
+      <div class="stat-text">alumnos han pasado por nuestras aulas</div>
     </div>
   </div>
 </div>
 
-<!-- PROGRAM FIT — Este programa es para ti si... -->
-<section>
-  <div class="container">
-    <span class="section-eyebrow">Identificación rápida</span>
-    <h2 class="section-title animate-on-scroll">Este programa es para ti si…</h2>
+<!-- SISTEMA CANAWAY -->
+<section class="sistema-section">
+  <div class="sistema-grid">
+    <div class="sistema-content animate-on-scroll">
+      <span class="section-eyebrow">El sistema Canaway</span>
+      <h2 class="section-title">Si antes no avanzaste, tal vez no fue falta de capacidad.<br>Fue falta de sistema.</h2>
+      <p>Muchas personas no fallan por falta de capacidad, sino por falta de continuidad. Canaway organiza el aprendizaje para que puedas sostenerlo y avanzar.</p>
+    </div>
 
-    <div class="fit-grid">
-      <!-- Card 1: Vives en Canadá — icono casa/hogar -->
-      <div class="fit-card animate-on-scroll" data-delay="80">
-        <span class="fit-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-            <polyline points="9 22 9 12 15 12 15 22"/>
-          </svg>
-        </span>
-        <p>Ya vives en Canadá y necesitas un mejor puntaje para avanzar con más seguridad.</p>
+    <div class="sistema-cards">
+      <!-- Continuidad real -->
+      <div class="sistema-card animate-on-scroll" data-delay="120">
+        <div class="sistema-card__head">
+          <span class="sistema-check" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </span>
+          <h4>Continuidad real</h4>
+        </div>
+        <p>Estudias en un bloque completo de 3 meses, sin pausas innecesarias ni reinicios constantes que rompan tu progreso.</p>
       </div>
 
-      <!-- Card 2: Crecimiento profesional — maletín -->
-      <div class="fit-card animate-on-scroll" data-delay="180">
-        <span class="fit-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
-            <rect width="20" height="14" x="2" y="6" rx="2"/>
-          </svg>
-        </span>
-        <p>Quieres mejorar tu perfil profesional y acceder a mejores oportunidades.</p>
+      <!-- Mismo profesor -->
+      <div class="sistema-card animate-on-scroll" data-delay="240">
+        <div class="sistema-card__head">
+          <span class="sistema-check" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </span>
+          <h4>Mismo profesor</h4>
+        </div>
+        <p>Tu profesor te acompaña durante el bloque, conoce tu avance y puede ayudarte con más precisión.</p>
       </div>
 
-      <!-- Card 3: Residencia — pasaporte/documento -->
-      <div class="fit-card animate-on-scroll" data-delay="280">
-        <span class="fit-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 7c0-1.1.9-2 2-2h10a2 2 0 0 1 2 2v12H5V7Z"/>
-            <path d="M14 2v4"/>
-            <path d="M10 2v4"/>
-            <circle cx="12" cy="13" r="2"/>
-            <path d="M9 18h6"/>
-          </svg>
-        </span>
-        <p>Buscas fortalecer tu camino hacia la residencia con una preparación más estratégica.</p>
+      <!-- Ruta por niveles -->
+      <div class="sistema-card animate-on-scroll" data-delay="360">
+        <div class="sistema-card__head">
+          <span class="sistema-check" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </span>
+          <h4>Ruta por niveles</h4>
+        </div>
+        <p>Avanzas de elemental a avanzado con una ruta clara, progresiva y ajuste de nivel si lo necesitas.</p>
       </div>
 
-      <!-- Card 4: Inglés no refleja potencial — chat/conversación -->
-      <div class="fit-card animate-on-scroll" data-delay="380">
-        <span class="fit-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>
-            <line x1="9" x2="15" y1="10" y2="10"/>
-            <line x1="9" x2="13" y1="14" y2="14"/>
-          </svg>
-        </span>
-        <p>Sientes que tu inglés no refleja todo tu potencial en el examen.</p>
-      </div>
-
-      <!-- Card 5: Ya estudiaste antes — refresh/segundo intento -->
-      <div class="fit-card animate-on-scroll" data-delay="480">
-        <span class="fit-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
-            <path d="M21 3v5h-5"/>
-            <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
-            <path d="M8 16H3v5"/>
-          </svg>
-        </span>
-        <p>Ya estudiaste antes, pero todavía no logras el resultado que necesitas.</p>
-      </div>
-
-      <!-- Card 6: Ruta clara — diana/objetivo -->
-      <div class="fit-card animate-on-scroll" data-delay="580">
-        <span class="fit-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <circle cx="12" cy="12" r="6"/>
-            <circle cx="12" cy="12" r="2"/>
-          </svg>
-        </span>
-        <p>Quieres una ruta clara, acompañamiento real y práctica enfocada en resultados.</p>
+      <!-- Refuerzo incluido -->
+      <div class="sistema-card animate-on-scroll" data-delay="480">
+        <div class="sistema-card__head">
+          <span class="sistema-check" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </span>
+          <h4>Refuerzo incluido</h4>
+        </div>
+        <p>Complementas tus clases con material de apoyo y recursos a tu ritmo.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIOS — fondo oscuro -->
-<section class="testimonials-section">
+<!-- RUTAS PRINCIPALES -->
+<section style="background:#f7f6f4;">
   <div class="container">
-    <span class="section-eyebrow">Prueba social</span>
-    <h2 class="section-title animate-on-scroll">Latinoamericanos que ya lograron resultados reales</h2>
-    <p class="section-lead">Miles de estudiantes han confiado en Canaway para perfeccionar su inglés, mejorar su desempeño en exámenes oficiales y acercarse a sus metas profesionales y migratorias en Canadá.</p>
+    <span class="section-eyebrow">Programas</span>
+    <h2 class="section-title animate-on-scroll">Elige el camino que mejor se adapta a tu meta</h2>
+    <div class="rutas-grid">
+      <!-- Ruta 01 — Crecimiento profesional (icono: maletín) -->
+      <div class="ruta-card animate-on-scroll" data-delay="100">
+        <div class="ruta-card__top">
+          <div class="ruta-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+              <rect width="20" height="14" x="2" y="6" rx="2"/>
+            </svg>
+          </div>
+          <span class="ruta-tag">Ruta 01</span>
+        </div>
+        <h3>Quiero mejorar mi inglés para trabajo, estudios o crecimiento personal</h3>
+        <p>Para avanzar con claridad, constancia y acompañamiento.</p>
+        <button class="ruta-btn" onclick="alert('¡Perfecto! Abriendo programas generales…')">
+          Ver programas generales
+          <span class="arrow-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+              <path d="M5 12h14"/>
+              <path d="m12 5 7 7-7 7"/>
+            </svg>
+          </span>
+        </button>
+      </div>
 
-    <div class="testimonials-grid">
+      <!-- Ruta 02 — Canadá (icono: hoja, alusión a la maple leaf) -->
+      <div class="ruta-card animate-on-scroll animate-scale" data-delay="300">
+        <div class="ruta-card__top">
+          <div class="ruta-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19.8 2c1 5 .5 10.5-3 14.7-1.5 1.8-4.2 3.4-6.8 3.4z"/>
+              <path d="M2 21c0-3 1.85-5.36 5.08-6"/>
+            </svg>
+          </div>
+          <span class="ruta-tag">Ruta 02</span>
+        </div>
+        <h3>Ya vivo en Canadá y necesito avanzar aquí</h3>
+        <p>Para trabajo, college, residencia, IELTS, CELPIP o comunicación diaria.</p>
+        <button class="ruta-btn" onclick="alert('¡Genial! Abriendo ruta Canadá…')">
+          Ver ruta Canadá
+          <span class="arrow-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+              <path d="M5 12h14"/>
+              <path d="m12 5 7 7-7 7"/>
+            </svg>
+          </span>
+        </button>
+      </div>
+
+      <!-- Ruta 03 — Adolescentes (icono: birrete de graduación) -->
+      <div class="ruta-card animate-on-scroll" data-delay="500">
+        <div class="ruta-card__top">
+          <div class="ruta-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/>
+              <path d="M22 10v6"/>
+              <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>
+            </svg>
+          </div>
+          <span class="ruta-tag">Ruta 03</span>
+        </div>
+        <h3>Quiero preparar a mi hijo para un futuro internacional</h3>
+        <p>Programa para adolescentes de 11 a 17 años que quieren estudiar en el extranjero.</p>
+        <button class="ruta-btn" onclick="alert('¡Excelente! Abriendo ruta junior…')">
+          Ver ruta junior
+          <span class="arrow-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+              <path d="M5 12h14"/>
+              <path d="m12 5 7 7-7 7"/>
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section style="background: var(--white);">
+  <div class="container">
+    <span class="section-eyebrow">Cómo funciona</span>
+    <h2 class="section-title animate-on-scroll">Tu camino claro en 4 pasos</h2>
+    <p style="font-size:1.05rem; line-height:1.75; color:var(--text-soft); max-width:640px; margin-top:12px;">Desde tu primera asesoría hasta tu certificación, te acompañamos con una ruta sencilla y sin fricción.</p>
+
+    <div class="pasos-grid">
+      <div class="paso-card animate-on-scroll" data-delay="100">
+        <div class="paso-num">01</div>
+        <h4>Agenda tu asesoría</h4>
+        <p>Déjanos tus datos y te contactamos por WhatsApp para entender tu meta y nivel actual.</p>
+      </div>
+      <div class="paso-card animate-on-scroll" data-delay="250">
+        <div class="paso-num">02</div>
+        <h4>Elige tu programa</h4>
+        <p>Te recomendamos la ruta ideal según tu objetivo, disponibilidad y país de residencia.</p>
+      </div>
+      <div class="paso-card animate-on-scroll" data-delay="400">
+        <div class="paso-num">03</div>
+        <h4>Toma clases en vivo</h4>
+        <p>Aprende con profesores certificados en aulas virtuales pequeñas y dinámicas.</p>
+      </div>
+      <div class="paso-card animate-on-scroll" data-delay="550">
+        <div class="paso-num">04</div>
+        <h4>Avanza y certifícate</h4>
+        <p>Completa tu nivel, recibe tu constancia y prepárate para certificaciones internacionales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AMBIENTE DE CLASE -->
+<section class="ambiente-section">
+  <div class="ambiente-grid">
+    <div class="ambiente-content animate-on-scroll">
+      <span class="section-eyebrow">Ambiente de clase</span>
+      <h2 class="section-title">Así son nuestras clases en vivo</h2>
+      <p>Aulas virtuales pequeñas con profesores nativos certificados. Aprendes en un entorno cercano, dinámico y enfocado en la vida real, desde donde estés.</p>
+
+      <div class="ambiente-features">
+        <div class="ambiente-feature">
+          <span class="ambiente-feature__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 7h-3a2 2 0 0 1-2-2V2"/>
+              <path d="M9 18a4 4 0 0 1-4-4V8a3 3 0 0 1 3-3h7l5 5v6a4 4 0 0 1-4 4Z"/>
+              <circle cx="12" cy="13" r="2"/>
+            </svg>
+          </span>
+          Profesores nativos
+        </div>
+        <div class="ambiente-feature">
+          <span class="ambiente-feature__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m22 8-6 4 6 4V8Z"/>
+              <rect width="14" height="12" x="2" y="6" rx="2" ry="2"/>
+            </svg>
+          </span>
+          Clases 100% en vivo
+        </div>
+        <div class="ambiente-feature">
+          <span class="ambiente-feature__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </span>
+          Sesiones grabadas
+        </div>
+        <div class="ambiente-feature">
+          <span class="ambiente-feature__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </span>
+          Aulas pequeñas
+        </div>
+      </div>
+    </div>
+
+    <div class="ambiente-image animate-on-scroll animate-scale" data-delay="200">
+      <img src="https://raw.githubusercontent.com/xultun/canaway/main/2148369610.jpg" alt="Estudiante en clase virtual de Canaway" />
+      <span class="ambiente-badge">Clase en vivo</span>
+    </div>
+  </div>
+</section>
+
+<!-- METODOLOGÍA -->
+<section style="background:#f7f6f4;">
+  <div class="container">
+    <span class="section-eyebrow">Metodología</span>
+    <h2 class="section-title animate-on-scroll">Por qué Canaway es diferente</h2>
+    <p style="font-size:1.05rem; line-height:1.75; color:var(--text-soft); max-width:640px; margin-top:12px;">Preparamos y perfeccionamos tu idioma para la vida real en el extranjero, con una metodología práctica que te ayuda a comunicarte con más seguridad, aplicar lo que aprendes en contextos reales y avanzar con una ruta clara según tu meta.</p>
+    
+    <div class="metodologia-grid">
+      <!-- Habla más — megáfono -->
+      <div class="metodo-card animate-on-scroll" data-delay="100">
+        <div class="metodo-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m3 11 18-5v12L3 14v-3z"/>
+            <path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/>
+          </svg>
+        </div>
+        <h4>Habla más desde el inicio</h4>
+        <p>Impulsamos la comunicación activa en cada clase para que ganes soltura, confianza y fluidez en situaciones reales.</p>
+      </div>
+
+      <!-- Gramática aplicada — libro abierto -->
+      <div class="metodo-card animate-on-scroll animate-scale" data-delay="250">
+        <div class="metodo-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 7v14"/>
+            <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/>
+          </svg>
+        </div>
+        <h4>Gramática aplicada</h4>
+        <p>Aprendes la gramática de forma práctica, conectándola con conversaciones, escritura y contextos reales de uso.</p>
+      </div>
+
+      <!-- Vida real — globo terráqueo -->
+      <div class="metodo-card animate-on-scroll" data-delay="400">
+        <div class="metodo-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+            <path d="M2 12h20"/>
+          </svg>
+        </div>
+        <h4>De la teoría a la vida real</h4>
+        <p>Llevamos el idioma más allá del aula para que puedas usarlo en estudios, trabajo y experiencias reales en el extranjero.</p>
+      </div>
+
+      <!-- Variaciones — idiomas/lenguaje -->
+      <div class="metodo-card animate-on-scroll animate-scale" data-delay="550">
+        <div class="metodo-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m5 8 6 6"/>
+            <path d="m4 14 6-6 2-3"/>
+            <path d="M2 5h12"/>
+            <path d="M7 2h1"/>
+            <path d="m22 22-5-10-5 10"/>
+            <path d="M14 18h6"/>
+          </svg>
+        </div>
+        <h4>Variaciones del idioma en diferentes países</h4>
+        <p>Te enseñamos a comprender diferencias de uso, pronunciación y expresiones, como inglés americano e inglés británico.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS REALES DE CANAWAY.COM -->
+<section style="background:#fff0ee;">
+  <div class="container">
+    <span class="section-eyebrow">Opiniones</span>
+    <h2 class="section-title animate-on-scroll">Miles de alumnos ya avanzaron con Canaway</h2>
+    <p style="font-size:1.05rem; line-height:1.75; color:var(--text-soft); max-width:640px; margin-top:12px;">Conoce la experiencia de estudiantes reales que mejoraron su nivel y lograron sus metas.</p>
+    
+    <div class="testimonials">
       <div class="testimonial-card animate-on-scroll" data-delay="100">
         <div class="testimonial-quote-mark" aria-hidden="true">”</div>
         <div class="testimonial-stars" aria-label="5 de 5 estrellas">
@@ -1228,17 +1491,17 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
         </div>
-        <p>“Lo que más me ayudó fue tener una ruta clara y acompañamiento constante. Dejé de practicar por practicar y empecé a prepararme con estrategia.”</p>
+        <p>“Sus profesores son nativos, ellos están siempre dispuestos a enseñarnos y a resolver nuestras dudas. La plataforma 100% online te permite aprender desde la comodidad de tu casa. Además, las clases quedan grabadas para que puedas verlas cuantas veces quieras.”</p>
         <div class="testimonial-author">
-          <img src="https://canaway.com/wp-content/uploads/2025/10/freepik__expand__34149.jpeg" alt="Carolina M." class="testimonial-avatar">
+          <img src="https://canaway.com/wp-content/uploads/2025/10/freepik__expand__34149.jpeg" alt="Jorge Montesinos" class="testimonial-avatar">
           <div>
-            <div class="testimonial-name">Carolina M.</div>
-            <div class="testimonial-location">Estudiante en Calgary</div>
+            <div class="testimonial-name">Jorge Montesinos</div>
+            <div class="testimonial-location">Estudiante de Canaway</div>
           </div>
         </div>
       </div>
 
-      <div class="testimonial-card animate-on-scroll animate-scale" data-delay="280">
+      <div class="testimonial-card animate-on-scroll animate-scale" data-delay="250">
         <div class="testimonial-quote-mark" aria-hidden="true">”</div>
         <div class="testimonial-stars" aria-label="5 de 5 estrellas">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
@@ -1247,17 +1510,17 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
         </div>
-        <p>“Sentí que por fin estaba trabajando todas mis habilidades de forma correcta. Eso me dio mucha más confianza para rendir el examen.”</p>
+        <p>“Es una excelente academia, mi experiencia desde Perú es buenísima, altamente recomendado y es importante decir que dominan la gestión educativa virtual. Profesores nativos A1 y el back muy bien manejado por el equipo administrativo.”</p>
         <div class="testimonial-author">
-          <img src="https://canaway.com/wp-content/uploads/2025/10/Jaime-20.jpg" alt="Daniel R." class="testimonial-avatar">
+          <img src="https://canaway.com/wp-content/uploads/2025/10/Jaime-20.jpg" alt="Jaime Duarte" class="testimonial-avatar">
           <div>
-            <div class="testimonial-name">Daniel R.</div>
-            <div class="testimonial-location">Estudiante en Toronto</div>
+            <div class="testimonial-name">Jaime Duarte</div>
+            <div class="testimonial-location">Estudiante desde Perú</div>
           </div>
         </div>
       </div>
 
-      <div class="testimonial-card animate-on-scroll" data-delay="460">
+      <div class="testimonial-card animate-on-scroll" data-delay="400">
         <div class="testimonial-quote-mark" aria-hidden="true">”</div>
         <div class="testimonial-stars" aria-label="5 de 5 estrellas">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
@@ -1266,92 +1529,77 @@
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
         </div>
-        <p>“No solo mejoré mi nivel. También entendí cómo responder mejor en el examen y cómo enfocarme en el puntaje que necesitaba para mi objetivo.”</p>
+        <p>“Los profesores son excelentes, nativos, demasiado motivadores y dinámicos en su clase. Además, te puedes conectar desde cualquier parte del mundo porque su modalidad es 100% online.”</p>
         <div class="testimonial-author">
-          <img src="https://canaway.com/wp-content/uploads/2025/10/freepik__expand__34150.jpeg" alt="Andrea L." class="testimonial-avatar">
+          <img src="https://canaway.com/wp-content/uploads/2025/10/freepik__expand__34150.jpeg" alt="Angela Véliz" class="testimonial-avatar">
           <div>
-            <div class="testimonial-name">Andrea L.</div>
-            <div class="testimonial-location">Estudiante en Vancouver</div>
+            <div class="testimonial-name">Angela Véliz</div>
+            <div class="testimonial-location">Estudiante de Canaway</div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="testimonial-banner animate-on-scroll">
-      Una academia canadiense. Un plan claro. Un acompañamiento pensado para metas reales en Canadá.
+      <div class="testimonial-card animate-on-scroll animate-scale" data-delay="550">
+        <div class="testimonial-quote-mark" aria-hidden="true">”</div>
+        <div class="testimonial-stars" aria-label="5 de 5 estrellas">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        </div>
+        <p>“Las clases son bastante dinámicas y entretenidas. Los profesores tienen un alto conocimiento y entregan la confianza suficiente para hacer las preguntas que uno tiene durante el aprendizaje.”</p>
+        <div class="testimonial-author">
+          <img src="https://canaway.com/wp-content/uploads/2025/10/freepik__expand__38369.jpeg" alt="Daniela Tobar" class="testimonial-avatar">
+          <div>
+            <div class="testimonial-name">Daniela Tobar</div>
+            <div class="testimonial-location">Estudiante de Canaway</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- PROPUESTA DE VALOR -->
+<!-- RESPALDO Y BENEFICIOS — con iconos -->
 <section>
   <div class="container">
-    <div class="value-grid">
-      <div class="animate-on-scroll">
-        <span class="section-eyebrow">Propuesta de valor</span>
-        <h2 class="section-title">Te ayudamos a obtener el puntaje ideal para tu objetivo en Canadá</h2>
-      </div>
-      <div class="value-content animate-on-scroll" data-delay="200">
-        <p>A veces, el problema no es tu nivel de inglés, sino la falta de estrategia. Con la estructura correcta y una preparación enfocada en lo que evalúan IELTS y CELPIP, tu desempeño puede cambiar por completo.</p>
-        <p>No se trata solo de estudiar más, sino de prepararte mejor. Te ayudamos a responder con más claridad, seguridad y enfoque para acercarte al puntaje que necesitas.</p>
-        <p>Porque detrás de ese puntaje no solo hay un examen, sino la posibilidad de avanzar con más seguridad, fortalecer tu perfil y acercarte a la vida que quieres construir en Canadá.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- INCLUDES — Qué recibirás (con iconos) -->
-<section style="background: var(--bg-alt);">
-  <div class="container">
-    <span class="section-eyebrow">Acompañamiento</span>
-    <h2 class="section-title animate-on-scroll">¿Qué recibirás con este acompañamiento especializado?</h2>
-    <p class="section-lead">Una preparación estructurada, estratégica y enfocada en el puntaje que necesitas para avanzar con seguridad.</p>
-
-    <div class="includes-grid">
-      <!-- Ruta personalizada — mapa/ruta -->
-      <div class="include-card animate-on-scroll" data-delay="100">
-        <div class="include-icon" aria-hidden="true">
+    <span class="section-eyebrow">Respaldo</span>
+    <h2 class="section-title animate-on-scroll">Tu progreso cuenta con respaldo</h2>
+    <p style="font-size:1.05rem; line-height:1.75; color:var(--text-soft); max-width:640px; margin-top:12px;">Avanza con una ruta clara y con beneficios pensados para acompañarte en cada etapa de tu aprendizaje.</p>
+    
+    <div class="beneficios-grid">
+      <!-- Card 1: Beca Level Up — icono de trofeo (logro / reconocimiento) -->
+      <div class="beneficio-card animate-on-scroll" data-delay="100">
+        <div class="beneficio-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14.106 5.553a2 2 0 0 0 1.788 0l3.659-1.83A1 1 0 0 1 21 4.619v12.764a1 1 0 0 1-.553.894l-4.553 2.277a2 2 0 0 1-1.788 0l-4.212-2.106a2 2 0 0 0-1.788 0l-3.659 1.83A1 1 0 0 1 3 19.381V6.618a1 1 0 0 1 .553-.894l4.553-2.277a2 2 0 0 1 1.788 0z"/>
-            <path d="M15 5.764v15"/>
-            <path d="M9 3.236v15"/>
+            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+            <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+            <path d="M4 22h16"/>
+            <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+            <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+            <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
           </svg>
         </div>
-        <h3>Ruta personalizada según tu objetivo</h3>
-        <p>Diseñamos un camino de preparación enfocado en el puntaje que necesitas según tu meta profesional, migratoria o personal en Canadá.</p>
+        <h4>Beca Level Up</h4>
+        <p>Reconocemos tu esfuerzo y progreso con una beca que impulsa tu siguiente etapa de aprendizaje y te motiva a seguir avanzando.</p>
       </div>
 
-      <!-- Perfeccionamiento integral — sparkle/brillo -->
-      <div class="include-card animate-on-scroll animate-scale" data-delay="220">
-        <div class="include-icon" aria-hidden="true">
+      <!-- Card 2: Garantía de nivel — icono de escudo con check (garantía / protección) -->
+      <div class="beneficio-card animate-on-scroll animate-scale" data-delay="300">
+        <div class="beneficio-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>
-            <path d="M20 3v4"/>
-            <path d="M22 5h-4"/>
-            <path d="M4 17v2"/>
-            <path d="M5 18H3"/>
+            <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/>
+            <path d="m9 12 2 2 4-4"/>
           </svg>
         </div>
-        <h3>Perfeccionamiento integral del idioma</h3>
-        <p>Trabajamos contigo speaking, listening, reading y writing para que mejores de forma completa y no solo superficial.</p>
+        <h4>Garantía de nivel</h4>
+        <p>Sigues una ruta académica diseñada para ayudarte a completar y consolidar el nivel que estás cursando.</p>
       </div>
 
-      <!-- Entrenamiento estratégico — diana -->
-      <div class="include-card animate-on-scroll" data-delay="340">
-        <div class="include-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/>
-            <circle cx="12" cy="12" r="6"/>
-            <circle cx="12" cy="12" r="2"/>
-          </svg>
-        </div>
-        <h3>Entrenamiento estratégico para el examen</h3>
-        <p>Aprenderás a responder con más seguridad, manejar mejor el tiempo y evitar errores que afectan tu resultado.</p>
-      </div>
-
-      <!-- Acompañamiento — personas -->
-      <div class="include-card animate-on-scroll animate-scale" data-delay="460">
-        <div class="include-icon" aria-hidden="true">
+      <!-- Card 3: Acompañamiento personalizado — icono de personas (apoyo / comunidad) -->
+      <div class="beneficio-card animate-on-scroll" data-delay="500">
+        <div class="beneficio-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
             <circle cx="9" cy="7" r="4"/>
@@ -1359,126 +1607,54 @@
             <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
           </svg>
         </div>
-        <h3>Acompañamiento continuo</h3>
-        <p>No avanzarás solo. Tendrás guía constante durante tu proceso para corregir, reforzar y mejorar con dirección.</p>
-      </div>
-
-      <!-- Resultados — gráfica subiendo -->
-      <div class="include-card animate-on-scroll" data-delay="580">
-        <div class="include-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
-            <polyline points="16 7 22 7 22 13"/>
-          </svg>
-        </div>
-        <h3>Enfoque real en resultados</h3>
-        <p>Cada parte del proceso está pensada para acercarte al puntaje ideal que necesitas para avanzar en Canadá.</p>
+        <h4>Acompañamiento personalizado</h4>
+        <p>Recibes orientación cercana durante tu proceso para avanzar con mayor claridad, constancia y enfoque según tu meta.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- AUTHORITY + VIDEO -->
-<section class="authority-section">
-  <div class="authority-wrap">
-    <div class="authority-content animate-on-scroll">
-      <span class="section-eyebrow">Contenido de autoridad</span>
-      <h2 class="section-title">Conoce los errores que más bajan el puntaje en IELTS y CELPIP</h2>
-      <p style="margin-top:18px;">Hemos identificado los errores más frecuentes que cometen los estudiantes al presentar estos exámenes, desde fallas en estructura y fluidez hasta respuestas que no cumplen con lo que realmente evalúan.</p>
-      <p>Por eso, además del acompañamiento, contamos con contenido en video, tips estratégicos y guía especializada para ayudarte a entender qué marcará la diferencia en tu resultado.</p>
-      <button class="authority-btn" onclick="alert('¡Genial! Te enviaremos orientación personalizada.')">
-        Quiero recibir orientación
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
-          <path d="M5 12h14"/>
-          <path d="m12 5 7 7-7 7"/>
-        </svg>
-      </button>
-    </div>
-
-    <div class="video-thumb animate-on-scroll animate-scale" data-delay="200" onclick="alert('Aquí puedes incrustar tu video real (YouTube, Vimeo, etc.)')">
-      <img src="https://raw.githubusercontent.com/xultun/canaway/main/2148369610.jpg" alt="Tips estratégicos para IELTS y CELPIP" />
-      <div class="video-thumb__play" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="currentColor">
-          <path d="M8 5v14l11-7z"/>
-        </svg>
-      </div>
-      <div class="video-thumb__caption">
-        <div class="video-thumb__title">Estrategias para subir tu puntaje</div>
-        <div class="video-thumb__sub">Tips de profesores expertos en IELTS y CELPIP</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="faq-section">
+<!-- CTA FINAL — con flechas en cada botón de ruta -->
+<div class="cta-final">
   <div class="container">
-    <span class="section-eyebrow">Preguntas frecuentes</span>
-    <h2 class="section-title animate-on-scroll">Resolvemos tus dudas antes de empezar</h2>
-
-    <div class="faq-list">
-      <details class="faq-item animate-on-scroll" data-delay="80">
-        <summary>
-          ¿Este acompañamiento es solo para personas que van a presentar el examen pronto?
-          <span class="faq-toggle" aria-hidden="true">+</span>
-        </summary>
-        <div class="faq-answer">No. También es ideal para quienes quieren empezar a prepararse con tiempo y construir una base sólida para alcanzar el puntaje que necesitan.</div>
-      </details>
-      <details class="faq-item animate-on-scroll" data-delay="160">
-        <summary>
-          ¿Me ayudará si mi meta es crecer profesionalmente en Canadá?
-          <span class="faq-toggle" aria-hidden="true">+</span>
-        </summary>
-        <div class="faq-answer">Sí. Esta preparación está pensada para quienes quieren fortalecer su perfil, mejorar sus oportunidades y avanzar con mayor seguridad en el país.</div>
-      </details>
-      <details class="faq-item animate-on-scroll" data-delay="240">
-        <summary>
-          ¿También puede ayudarme si busco residencia?
-          <span class="faq-toggle" aria-hidden="true">+</span>
-        </summary>
-        <div class="faq-answer">Sí. Muchas personas necesitan un mejor puntaje como parte de su proceso y buscan una preparación más estratégica y guiada.</div>
-      </details>
-      <details class="faq-item animate-on-scroll" data-delay="320">
-        <summary>
-          ¿Qué pasa si siento que me falta mejorar varias habilidades del idioma?
-          <span class="faq-toggle" aria-hidden="true">+</span>
-        </summary>
-        <div class="faq-answer">Justamente por eso el enfoque es integral. Trabajamos todas las áreas clave del idioma para ayudarte a mejorar de forma completa.</div>
-      </details>
-      <details class="faq-item animate-on-scroll" data-delay="400">
-        <summary>
-          ¿Qué pasa después de llenar el formulario?
-          <span class="faq-toggle" aria-hidden="true">+</span>
-        </summary>
-        <div class="faq-answer">Después de completar tus datos, podrás realizar el pago de la asesoría especial. Luego tendrás una sesión con profesores expertos en IELTS y CELPIP, quienes revisarán tu caso y te recomendarán la mejor ruta según tu objetivo.</div>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section class="final-cta-section">
-  <div class="final-cta">
-    <h2 class="animate-on-scroll">Empieza con una estrategia clara y personalizada</h2>
-    <p>Da el siguiente paso con el respaldo de una academia canadiense y una preparación enfocada en el puntaje que realmente necesitas para tu meta.</p>
-    <div class="final-cta__buttons">
-      <button class="btn-primary" onclick="document.getElementById('hero-form').scrollIntoView({behavior:'smooth'})">
-        Quiero alcanzar mi puntaje ideal
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
-          <path d="M5 12h14"/>
-          <path d="m12 5 7 7-7 7"/>
-        </svg>
+    <h2 class="animate-on-scroll">Encuentra la ruta que mejor se adapta a tu meta</h2>
+    <p style="font-size:1.05rem; max-width:620px; margin:0 auto 32px; opacity:0.9;">Ya sea que quieras crecer profesionalmente, avanzar en Canadá o prepararte para estudiar en el extranjero, en Canaway te ayudamos a elegir el programa ideal.</p>
+    
+    <div class="cta-buttons">
+      <button onclick="alert('¡Perfecto! Abriendo programas generales…')">
+        Ver programas generales
+        <span class="arrow-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+            <path d="M5 12h14"/>
+            <path d="m12 5 7 7-7 7"/>
+          </svg>
+        </span>
       </button>
-      <button class="btn-secondary" onclick="alert('Te conectamos con un asesor por WhatsApp.')">
-        Quiero hablar con un asesor
+      <button onclick="alert('¡Genial! Abriendo ruta Canadá…')">
+        Ver ruta Canadá
+        <span class="arrow-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+            <path d="M5 12h14"/>
+            <path d="m12 5 7 7-7 7"/>
+          </svg>
+        </span>
+      </button>
+      <button onclick="alert('¡Excelente! Abriendo ruta junior…')">
+        Ver ruta junior
+        <span class="arrow-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+            <path d="M5 12h14"/>
+            <path d="m12 5 7 7-7 7"/>
+          </svg>
+        </span>
       </button>
     </div>
   </div>
-</section>
+</div>
 
 <!-- CTA FLOTANTE MOBILE -->
-<a href="#hero-form" class="mobile-cta" aria-label="Ir al formulario para agendar mi asesoría">
-  Quiero agendar mi asesoría
+<a href="#hero-form" class="mobile-cta" aria-label="Ir al formulario para recibir mi recomendación">
+  Quiero mi recomendación
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
     <path d="M5 12h14"/>
     <path d="m12 5 7 7-7 7"/>
@@ -1486,21 +1662,50 @@
 </a>
 
 <script>
-/* Intersection Observer */
+/* Toggle programa */
+function toggleProgram(btn) {
+  const allBtns = btn.parentElement.querySelectorAll('button');
+  allBtns.forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+
+/* Contadores animados */
+function animateCounter(el) {
+  const target = parseInt(el.getAttribute('data-target'));
+  // Si hay un span .stat-num interno (caso "3 meses"), animamos ese.
+  // Si no, animamos el elemento entero (caso solo número como "15,000+").
+  const writeTo = el.querySelector('.stat-num') || el;
+  const duration = 2200;
+  const increment = target / (duration / 16);
+  let current = 0;
+  const timer = setInterval(() => {
+    current += increment;
+    if (current >= target) {
+      current = target;
+      clearInterval(timer);
+    }
+    writeTo.textContent = target >= 1000 ? Math.floor(current).toLocaleString('es-ES') + '+' : Math.floor(current);
+  }, 16);
+}
+
+/* Intersection Observer avanzado */
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry, index) => {
     if (entry.isIntersecting) {
       const el = entry.target;
-      const delay = parseInt(el.getAttribute('data-delay')) || (index * 60);
+      const delay = parseInt(el.getAttribute('data-delay')) || (index * 80);
       setTimeout(() => {
         el.classList.add('visible');
+        if (el.classList.contains('stat-number')) animateCounter(el);
       }, delay);
       observer.unobserve(el);
     }
   });
-}, { threshold: 0.2, rootMargin: "0px 0px -50px 0px" });
+}, { threshold: 0.25, rootMargin: "0px 0px -50px 0px" });
 
-document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+document.querySelectorAll('.animate-on-scroll, .stat-number').forEach(el => {
+  observer.observe(el);
+});
 
 /* Mobile CTA — aparece al pasar el hero */
 (function() {
@@ -1525,7 +1730,7 @@ document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(e
   if (!carousel) return;
   const cards = carousel.querySelectorAll('.professor-card');
   const dots = carousel.querySelectorAll('.professor-carousel__dots button');
-  if (cards.length < 2) return;
+  if (cards.length < 2) return; // no carrusel necesario si solo hay 1
 
   let current = 0;
   let intervalId = null;
@@ -1536,7 +1741,11 @@ document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(e
     dots.forEach((d, i) => d.classList.toggle('active', i === index));
     current = index;
   }
-  function next() { show((current + 1) % cards.length); }
+
+  function next() {
+    show((current + 1) % cards.length);
+  }
+
   function startAutoplay() {
     stopAutoplay();
     intervalId = setInterval(next, ROTATE_MS);
@@ -1549,19 +1758,20 @@ document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(e
     dot.addEventListener('click', () => {
       const idx = parseInt(dot.getAttribute('data-index'));
       show(idx);
-      startAutoplay();
+      startAutoplay(); // reinicia el ciclo desde el click
     });
   });
 
   carousel.addEventListener('mouseenter', stopAutoplay);
   carousel.addEventListener('mouseleave', startAutoplay);
+  // Accesibilidad: detener si el usuario está enfocado en algún dot
   carousel.addEventListener('focusin', stopAutoplay);
   carousel.addEventListener('focusout', startAutoplay);
 
   startAutoplay();
 })();
 
-console.log('%c✅ Canaway IELTS / CELPIP — Landing premium dark', 'color:#DB1709; font-weight:700; font-size:13px;');
+console.log('%c✅ Canaway Landing Page – Ultra moderna con fondo Canadá tenue', 'color:#DB1709; font-weight:700; font-size:13px;');
 </script>
 </body>
 </html>
